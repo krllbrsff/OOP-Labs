@@ -1,9 +1,9 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
-public class Asteroid : IObstacle
+public class Asteroid : Obstacle
 {
     public Asteroid()
     {
     }
 
-    public int Damage { get; }
+    public override int Damage { get; }
 }
