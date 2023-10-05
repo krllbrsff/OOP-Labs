@@ -1,5 +1,5 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
-internal class Meteorite : IObstacle
+public class Meteorite : IObstacle
 {
     public Meteorite()
     {

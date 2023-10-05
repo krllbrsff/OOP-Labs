@@ -1,9 +1,10 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
-public class Asteroid : IObstacle
+public class Whale : IObstacle
 {
-    public Asteroid()
+    public Whale()
     {
     }
 
     public int Damage { get; }
+    public int Quantity { get; }
 }
