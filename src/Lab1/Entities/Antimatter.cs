@@ -1,7 +1,7 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
-internal class Asteroid : IObstacle
+internal class Antimatter : IObstacle
 {
-    public Asteroid()
+    public Antimatter()
     {
     }
 
