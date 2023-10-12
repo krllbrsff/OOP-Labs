@@ -6,4 +6,5 @@ public class Antimatter : Obstacle
     }
 
     public override int Damage { get; }
+    public int Quantity { get; }
 }

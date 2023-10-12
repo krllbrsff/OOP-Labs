@@ -6,5 +6,5 @@ public class Whale : Obstacle
     }
 
     public override int Damage { get; }
-    public int Quantity { get; }
+    public override int Quantity { get; }
 }

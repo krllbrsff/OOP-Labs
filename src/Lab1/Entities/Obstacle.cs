@@ -3,4 +3,5 @@
 public abstract class Obstacle
 {
     public abstract int Damage { get; }
+    public abstract int Quantity { get; }
 }
