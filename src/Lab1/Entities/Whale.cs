@@ -1,10 +1,10 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
-public class Whale : Obstacle
+public class Whale : IObstacle
 {
     public Whale()
     {
     }
 
-    public override int Damage { get; }
-    public override int Quantity { get; }
+    public int Damage { get; }
+    public int Quantity { get; }
 }

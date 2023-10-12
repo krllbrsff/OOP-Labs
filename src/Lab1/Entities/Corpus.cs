@@ -1,15 +1,15 @@
 ﻿using System;
 
 namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
-public abstract class Deflector : IDamageable
+public abstract class Corpus : IDamageable
 {
+    public int HealthPoints { get; protected set; }
+
     public int MaxAsteroidCollisions { get; }
 
     public int MaxMeteoriteCollisions { get; }
 
-    public int HealthPoints { get; protected set; } = IDamageable.DefaultHealthPoint;
-
-    public int PhotonicDeflectorHP { get; protected set; }
+    public bool IsAntiNitrineEmitter { get; protected set; }
 
     public void TakeDamage(IObstacle obstacle)
     {
@@ -22,9 +22,7 @@ public abstract class Deflector : IDamageable
                 HealthPoints -= IDamageable.DefaultHealthPoint / MaxMeteoriteCollisions; break;
 
             case Antimatter:
-                if (PhotonicDeflectorHP > 0)
-                    PhotonicDeflectorHP--;
-                else throw new NotImplementedException(); break;
+                throw new NotImplementedException();
 
             case Whale:
                 if (HealthPoints > 0)
@@ -33,8 +31,8 @@ public abstract class Deflector : IDamageable
         }
     }
 
-    public void SetPhotonicDeflector()
+    public void SetAntiNitrineEmitter()
     {
-        PhotonicDeflectorHP = 3;
+        IsAntiNitrineEmitter = true;
     }
 }

@@ -1,10 +1,10 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
-public class Antimatter : Obstacle
+public class Antimatter : IObstacle
 {
     public Antimatter()
     {
     }
 
-    public override int Damage { get; }
+    public int Damage { get; }
     public int Quantity { get; }
 }
