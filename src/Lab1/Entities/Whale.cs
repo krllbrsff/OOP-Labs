@@ -6,5 +6,7 @@ public class Whale : IObstacle
     }
 
     public int Damage { get; }
-    public int Quantity { get; }
+    public int Quantity { get; private set; }
+
+    public void DecreaseQuantity() => Quantity--;
 }

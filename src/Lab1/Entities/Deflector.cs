@@ -3,9 +3,9 @@
 namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 public abstract class Deflector : IDamageable
 {
-    public int MaxAsteroidCollisions { get; }
+    public int MaxAsteroidCollisions { get; init; }
 
-    public int MaxMeteoriteCollisions { get; }
+    public int MaxMeteoriteCollisions { get; init; }
 
     public int HealthPoints { get; protected set; } = IDamageable.DefaultHealthPoint;
 
@@ -15,11 +15,11 @@ public abstract class Deflector : IDamageable
     {
         switch (obstacle)
         {
-            case Asteroid:
-                HealthPoints -= IDamageable.DefaultHealthPoint / MaxAsteroidCollisions; break;
+            case Asteroid _:
+                HealthPoints -= IDamageable.DefaultHealthPoint / MaxAsteroidCollisions * obstacle.Quantity; break;
 
-            case Meteorite:
-                HealthPoints -= IDamageable.DefaultHealthPoint / MaxMeteoriteCollisions; break;
+            case Meteorite _:
+                HealthPoints -= IDamageable.DefaultHealthPoint / MaxMeteoriteCollisions * obstacle.Quantity; break;
 
             case Antimatter:
                 if (PhotonicDeflectorHP > 0)
@@ -36,5 +36,12 @@ public abstract class Deflector : IDamageable
     public void SetPhotonicDeflector()
     {
         PhotonicDeflectorHP = 3;
+    }
+
+    public bool IsAlive()
+    {
+        if (HealthPoints > 0)
+            return true;
+        else return false;
     }
 }

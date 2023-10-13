@@ -2,6 +2,7 @@
 
 public interface IObstacle
 {
-    public abstract int Damage { get; }
-    public abstract int Quantity { get; }
+    public int Damage { get; }
+    public int Quantity { get; }
+    public void DecreaseQuantity();
 }

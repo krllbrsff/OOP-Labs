@@ -3,11 +3,15 @@
 namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 public abstract class Corpus : IDamageable
 {
+    public Corpus()
+    {
+        
+    }
     public int HealthPoints { get; protected set; }
 
-    public int MaxAsteroidCollisions { get; }
+    public int MaxAsteroidCollisions { get; init; }
 
-    public int MaxMeteoriteCollisions { get; }
+    public int MaxMeteoriteCollisions { get; init; }
 
     public bool IsAntiNitrineEmitter { get; protected set; }
 
@@ -34,5 +38,12 @@ public abstract class Corpus : IDamageable
     public void SetAntiNitrineEmitter()
     {
         IsAntiNitrineEmitter = true;
+    }
+
+    public bool IsAlive()
+    {
+        if (HealthPoints > 0)
+            return true;
+        else return false;
     }
 }
