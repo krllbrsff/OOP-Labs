@@ -3,59 +3,55 @@
 namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 public class Runner
 {
-    private Runner(Collection<IShip> ships, Collection<IEnvironment> environments)
+    public Runner(IShip ship, Collection<IEnvironment> environments)
     {
-        Ships = ships;
+        Ship = ship;
         Environments = environments;
-        ResultsCollection = new Collection<Result>();
     }
 
-    public Collection<Result>? ResultsCollection { get; private set; }
     public Result? Result { get; private set; }
-    private Collection<IShip> Ships { get; }
+    public IShip Ship { get; }
     private Collection<IEnvironment> Environments { get; }
-    public void Go()
+    public Result Run()
     {
-        foreach (IShip ship in Ships)
+        Result = new Result();
+
+        foreach (IEnvironment environment in Environments)
         {
-            foreach (IEnvironment environment in Environments)
+            if (Ship?.Deflector != null)
+                Result = Ship.Deflector.TakeDamage(environment);
+
+            if (Result?.FinalMessage is null)
             {
-                if (ship?.Deflector != null)
-                    Result = ship?.Deflector.TakeDamage(environment);
+                Result = Ship?.Corpus?.TakeDamage(environment);
+            }
+            else
+            {
+                break;
+            }
 
-                if (Result?.FinalMessage is null)
-                {
-                    Result = ship?.Corpus?.TakeDamage(environment);
-                }
-                else
-                {
-                    ResultsCollection?.Add(Result);
-                    break;
-                }
+            switch (environment)
+            {
+                case OpenSpace:
+                    Result = Ship?.ImpulseEngine.AddDistance(environment); break;
 
-                switch (environment)
-                {
-                    case OpenSpace:
-                        Result = ship?.ImpulseEngine.AddDistance(environment); break;
+                case IncreasedDensityNebulae:
+                    Result = Ship?.JumpEngine?.AddDistance(environment); break;
 
-                    case IncreasedDensityNebulae:
-                        Result = ship?.JumpEngine?.AddDistance(environment); break;
+                case NitrineParticlesNebulae:
+                    Result = Ship?.ImpulseEngine.AddDistance(environment); break;
+            }
 
-                    case NitrineParticlesNebulae:
-                        Result = ship?.ImpulseEngine.AddDistance(environment); break;
-                }
-
-                if (Result?.FinalMessage != null)
-                {
-                    ResultsCollection?.Add(Result);
-                    break;
-                }
-                else
-                {
-                    Result = new Result().Success();
-                    ResultsCollection?.Add(Result);
-                }
+            if (Result?.FinalMessage != null)
+            {
+                break;
+            }
+            else
+            {
+                Result = new Result().Success();
             }
         }
+
+        return Result;
     }
 }

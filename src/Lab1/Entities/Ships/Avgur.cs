@@ -1,11 +1,11 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 internal class Avgur : IShip
 {
-    public Avgur()
+    public Avgur(bool emitter)
     {
         ImpulseEngine = new ImpulseEngineE();
         JumpEngine = new JumpEngineAlpha();
-        Corpus = new ThirdLevelCorpus();
+        Corpus = new ThirdLevelCorpus(emitter);
         Deflector = new Deflector3();
     }
 

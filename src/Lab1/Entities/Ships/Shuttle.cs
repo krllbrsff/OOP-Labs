@@ -1,10 +1,10 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 internal class Shuttle : IShip
 {
-    public Shuttle()
+    public Shuttle(bool emitter)
     {
         ImpulseEngine = new ImpulseEngineC();
-        Corpus = new FirstLevelCorpus();
+        Corpus = new FirstLevelCorpus(emitter);
     }
 
     public IEngine ImpulseEngine { get; }

@@ -1,11 +1,11 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 internal class Vaclas : IShip
 {
-    public Vaclas()
+    public Vaclas(bool emitter)
     {
         ImpulseEngine = new ImpulseEngineE();
         JumpEngine = new JumpEngineGamma();
-        Corpus = new SecondLevelCorpus();
+        Corpus = new SecondLevelCorpus(emitter);
         Deflector = new Deflector1();
     }
 
