@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 
 namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 public class Runner
@@ -18,17 +19,14 @@ public class Runner
 
         foreach (IEnvironment environment in Environments)
         {
-            if (Ship?.Deflector != null)
+            if (Result is null) throw new ArgumentNullException();
+
+            if (Ship?.Deflector != null && Ship.Deflector.IsAlive())
                 Result = Ship.Deflector.TakeDamage(environment);
 
-            if (Result?.FinalMessage is null)
-            {
+            if (Result?.FinalMessage is Result.Results.Success)
                 Result = Ship?.Corpus?.TakeDamage(environment);
-            }
-            else
-            {
-                break;
-            }
+            else break;
 
             switch (environment)
             {
@@ -36,22 +34,17 @@ public class Runner
                     Result = Ship?.ImpulseEngine.AddDistance(environment); break;
 
                 case IncreasedDensityNebulae:
-                    Result = Ship?.JumpEngine?.AddDistance(environment); break;
+                    if (Ship?.JumpEngine is null)
+                        Result?.OutOfFuel();
+                    else
+                        Result = Ship?.JumpEngine.AddDistance(environment); break;
 
                 case NitrineParticlesNebulae:
                     Result = Ship?.ImpulseEngine.AddDistance(environment); break;
             }
-
-            if (Result?.FinalMessage != null)
-            {
-                break;
-            }
-            else
-            {
-                Result = new Result().Success();
-            }
         }
 
+        if (Result is null) throw new ArgumentNullException();
         return Result;
     }
 }

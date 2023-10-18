@@ -5,6 +5,8 @@ internal class Shuttle : IShip
     {
         ImpulseEngine = new ImpulseEngineC();
         Corpus = new FirstLevelCorpus(emitter);
+        Deflector = null;
+        JumpEngine = null;
     }
 
     public IEngine ImpulseEngine { get; }

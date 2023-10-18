@@ -1,25 +1,26 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
+﻿using System.Collections.ObjectModel;
+
+namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 internal class OpenSpace : IEnvironment
 {
-    public OpenSpace(int length, int asteroidsCount, int meteoritesCount)
+    public OpenSpace(int length, Collection<IObstacle> obstacles)
     {
-        Asteroid = new Asteroid(asteroidsCount);
-        Meteorite = new Meteorite(meteoritesCount);
+        Obstacles = obstacles;
         Distance = length;
-        Obstacles = null;
-        Obstacles = Asteroid;
     }
 
-    public int AsteroidsCount { get; }
-    public int MeteoritesCount { get; }
     public int Distance { get; }
-    public IObstacle Asteroid { get; }
-    public IObstacle Meteorite { get; }
-    public IObstacle? Obstacles { get; private set; }
+    public Collection<IObstacle> Obstacles { get; }
 
-    public void ObstacleChange()
+    public Collection<IObstacle> GetCorrectObstacles()
     {
-        if (Obstacles?.Quantity == 0)
-        Obstacles = Meteorite;
+        var obstacles = new Collection<IObstacle>();
+        foreach (IObstacle obstacle in Obstacles)
+        {
+            if (obstacle is Asteroid or Meteorite)
+                obstacles.Add(obstacle);
+        }
+
+        return obstacles;
     }
 }

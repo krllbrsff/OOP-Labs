@@ -24,7 +24,8 @@ public class JumpEngineGamma : IEngine
         environment = environment ?? throw new ArgumentNullException(nameof(environment));
         Distance += environment.Distance;
         AddTime(environment.Distance);
-        return SpendFuel(environment.Distance);
+        Result? result = SpendFuel(environment.Distance);
+        return result;
     }
 
     private void AddTime(int distance)

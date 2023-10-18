@@ -1,4 +1,6 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
+﻿using System;
+
+namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 public abstract class Deflector : IDamageable
 {
     public int MaxAsteroidCollisions { get; init; }
@@ -9,64 +11,57 @@ public abstract class Deflector : IDamageable
 
     public double HealthPoints { get; protected set; } = IDamageable.DefaultHealthPoint;
 
+    public bool PhotonicDeflector { get; protected set; }
     public int PhotonicDeflectorHP { get; protected set; }
 
     public Result TakeDamage(IEnvironment environment)
     {
-        while (environment?.Obstacles?.Quantity >= 0)
+        environment = environment ?? throw new ArgumentNullException(nameof(environment));
+
+        foreach (IObstacle obstacle in environment.Obstacles)
         {
-            switch (environment?.Obstacles)
+            while (obstacle.Quantity > 0)
             {
-                case Asteroid:
-                    HealthPoints -= IDamageable.DefaultHealthPoint / MaxAsteroidCollisions;
-                    environment.Obstacles.DecreaseQuantity();
-                    if (IsAlive())
-                    {
-                        environment.ObstacleChange();
-                        break;
-                    }
-                    else
-                    {
-                        return new Result();
-                    }
+                switch (obstacle)
+                {
+                    case Asteroid:
+                        HealthPoints -= IDamageable.DefaultHealthPoint / MaxAsteroidCollisions;
+                        obstacle.DecreaseQuantity();
+                        if (IsAlive()) break;
+                        else return new Result();
 
-                case Meteorite:
-                    HealthPoints -= IDamageable.DefaultHealthPoint / MaxMeteoriteCollisions;
-                    environment.Obstacles.DecreaseQuantity();
-                    if (IsAlive()) break;
-                    else return new Result();
+                    case Meteorite:
+                        HealthPoints -= IDamageable.DefaultHealthPoint / MaxMeteoriteCollisions;
+                        obstacle.DecreaseQuantity();
+                        if (IsAlive()) break;
+                        else return new Result();
 
-                case Antimatter:
-                    if (HasPhotonicDeflector())
-                        PhotonicDeflectorHP--;
-                    else return new Result().CrewIsDead(); break;
+                    case Antimatter:
+                        if (PhotonicDeflector)
+                        {
+                            PhotonicDeflectorHP--;
+                            break;
+                        }
+                        else
+                        {
+                            return new Result().CrewIsDead();
+                        }
 
-                case Whale:
-                    HealthPoints -= IDamageable.DefaultHealthPoint / MaxWhaleCollisions;
-                    environment.Obstacles.DecreaseQuantity();
-                    if (IsAlive()) break;
-                    else return new Result();
+                    case Whale:
+                        HealthPoints -= IDamageable.DefaultHealthPoint / MaxWhaleCollisions;
+                        obstacle.DecreaseQuantity();
+                        if (IsAlive()) break;
+                        else return new Result();
+                }
             }
         }
 
         return new Result();
     }
 
-    public void SetPhotonicDeflector()
-    {
-        PhotonicDeflectorHP = 3;
-    }
-
     public bool IsAlive()
     {
         if (HealthPoints > 0)
-            return true;
-        else return false;
-    }
-
-    public bool HasPhotonicDeflector()
-    {
-        if (PhotonicDeflectorHP > 0)
             return true;
         else return false;
     }

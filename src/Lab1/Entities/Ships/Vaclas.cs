@@ -1,12 +1,12 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 internal class Vaclas : IShip
 {
-    public Vaclas(bool emitter)
+    public Vaclas(bool emitter, bool photonicDeflector)
     {
         ImpulseEngine = new ImpulseEngineE();
         JumpEngine = new JumpEngineGamma();
         Corpus = new SecondLevelCorpus(emitter);
-        Deflector = new Deflector1();
+        Deflector = new Deflector1(photonicDeflector);
     }
 
     public IEngine ImpulseEngine { get; }

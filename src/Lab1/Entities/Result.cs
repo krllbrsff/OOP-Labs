@@ -3,32 +3,41 @@ public class Result
 {
     public Result()
     {
-        FinalMessage = null;
+        FinalMessage = Results.Success;
     }
 
-    public string? FinalMessage { get; private set; }
+    public enum Results
+    {
+        CrewIsDead,
+        OutOfFuel,
+        ShipIsDestroyed,
+        Success,
+        DeflectorIsDestroyed,
+    }
+
+    public Results FinalMessage { get; private set; }
 
     public Result CrewIsDead()
     {
-        FinalMessage = "Crew is dead";
+        FinalMessage = Results.CrewIsDead;
         return this;
     }
 
     public Result OutOfFuel()
     {
-        FinalMessage = "Ship lost";
+        FinalMessage = Results.OutOfFuel;
         return this;
     }
 
     public Result ShipIsDestroyed()
     {
-        FinalMessage = "Ship is destroyed";
+        FinalMessage = Results.ShipIsDestroyed;
         return this;
     }
 
     public Result Success()
     {
-        FinalMessage = "Success!";
+        FinalMessage = Results.Success;
         return this;
     }
 }

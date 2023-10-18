@@ -1,4 +1,6 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
+﻿using System;
+
+namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 public abstract class Corpus : IDamageable
 {
     public double HealthPoints { get; protected set; } = IDamageable.DefaultHealthPoint;
@@ -11,42 +13,32 @@ public abstract class Corpus : IDamageable
 
     public Result TakeDamage(IEnvironment environment)
     {
-        while (environment?.Obstacles?.Quantity > 0)
+        environment = environment ?? throw new ArgumentNullException(nameof(environment));
+
+        foreach (IObstacle obstacle in environment.Obstacles)
         {
-            switch (environment.Obstacles)
+            while (obstacle.Quantity >= 0)
             {
-                case Asteroid _:
-                    HealthPoints -= IDamageable.DefaultHealthPoint / MaxAsteroidCollisions;
-                    environment.Obstacles.DecreaseQuantity();
-                    if (IsAlive())
-                    {
-                        environment.ObstacleChange();
-                        break;
-                    }
-                    else
-                    {
+                switch (obstacle)
+                {
+                    case Asteroid:
+                        HealthPoints -= IDamageable.DefaultHealthPoint / MaxAsteroidCollisions;
+                        obstacle.DecreaseQuantity();
+                        if (IsAlive()) break;
+                        else return new Result().ShipIsDestroyed();
+
+                    case Meteorite:
+                        HealthPoints -= IDamageable.DefaultHealthPoint / MaxMeteoriteCollisions;
+                        obstacle.DecreaseQuantity();
+                        if (IsAlive()) break;
+                        else return new Result().ShipIsDestroyed();
+
+                    case Antimatter:
+                        return new Result().CrewIsDead();
+
+                    case Whale:
                         return new Result().ShipIsDestroyed();
-                    }
-
-                case Meteorite _:
-                    HealthPoints -= IDamageable.DefaultHealthPoint / MaxMeteoriteCollisions;
-                    environment.Obstacles.DecreaseQuantity();
-                    if (IsAlive()) break;
-                    else return new Result().ShipIsDestroyed();
-
-                case Antimatter:
-                    return new Result().CrewIsDead();
-
-                case Whale:
-                    if (HasAntiNitrineEmitter)
-                    {
-                        environment.Obstacles.DecreaseQuantity();
-                        break;
-                    }
-                    else
-                    {
-                        return new Result().ShipIsDestroyed();
-                    }
+                }
             }
         }
 

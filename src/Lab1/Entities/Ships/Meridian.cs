@@ -1,11 +1,11 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 internal class Meridian : IShip
 {
-    public Meridian(bool emitter)
+    public Meridian(bool emitter, bool photonicDeflector)
     {
         ImpulseEngine = new ImpulseEngineE();
         Corpus = new SecondLevelCorpus(emitter);
-        Deflector = new Deflector2();
+        Deflector = new Deflector2(photonicDeflector);
     }
 
     public IEngine ImpulseEngine { get; }

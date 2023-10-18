@@ -1,8 +1,10 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
+﻿using System.Collections.ObjectModel;
+
+namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 public interface IEnvironment
 {
     public int Distance { get; }
-    public IObstacle? Obstacles { get; }
+    public Collection<IObstacle> Obstacles { get; }
 
-    public void ObstacleChange();
+    public Collection<IObstacle> GetCorrectObstacles();
 }
