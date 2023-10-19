@@ -6,6 +6,6 @@ public interface IDamageable
     public double HealthPoints { get; }
     public int MaxAsteroidCollisions { get; }
     public int MaxMeteoriteCollisions { get; }
-    public Result TakeDamage(IEnvironment environment);
+    public Result TakeDamage(IEnvironment environment, IShip ship);
     public bool IsAlive();
 }

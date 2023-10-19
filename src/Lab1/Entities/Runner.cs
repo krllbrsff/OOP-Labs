@@ -22,25 +22,28 @@ public class Runner
             if (Result is null) throw new ArgumentNullException();
 
             if (Ship?.Deflector != null && Ship.Deflector.IsAlive())
-                Result = Ship.Deflector.TakeDamage(environment);
+                Result = Ship.Deflector.TakeDamage(environment, Ship);
 
             if (Result?.FinalMessage is Result.Results.Success)
-                Result = Ship?.Corpus?.TakeDamage(environment);
+                Result = Ship?.Corpus?.TakeDamage(environment, Ship);
             else break;
 
-            switch (environment)
+            if (Result?.FinalMessage is Result.Results.Success)
             {
-                case OpenSpace:
-                    Result = Ship?.ImpulseEngine.AddDistance(environment); break;
+                switch (environment)
+                {
+                    case OpenSpace:
+                        Result = Ship?.ImpulseEngine.AddDistance(environment); break;
 
-                case IncreasedDensityNebulae:
-                    if (Ship?.JumpEngine is null)
-                        Result?.OutOfFuel();
-                    else
-                        Result = Ship?.JumpEngine.AddDistance(environment); break;
+                    case IncreasedDensityNebulae:
+                        if (Ship?.JumpEngine is null)
+                            Result?.OutOfFuel();
+                        else
+                            Result = Ship?.JumpEngine.AddDistance(environment); break;
 
-                case NitrineParticlesNebulae:
-                    Result = Ship?.ImpulseEngine.AddDistance(environment); break;
+                    case NitrineParticlesNebulae:
+                        Result = Ship?.ImpulseEngine.AddDistance(environment); break;
+                }
             }
         }
 

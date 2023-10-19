@@ -5,7 +5,7 @@ public class JumpEngineGamma : IEngine
 {
     private const int _startFuel = 40000;
     private const int _speed = 10;
-    private const int _fuelConsumption = 1 / 1;
+    private const double _fuelConsumption = 1 / 1;
 
     public JumpEngineGamma()
     {
@@ -14,6 +14,7 @@ public class JumpEngineGamma : IEngine
     }
 
     public double Fuel { get; private set; } = _startFuel;
+    public double SpentFuel { get; private set; }
 
     public double Distance { get; private set; }
 
@@ -37,7 +38,12 @@ public class JumpEngineGamma : IEngine
     {
         Fuel -= distance * distance * _fuelConsumption;
         if (Fuel <= 0)
+        {
+            Fuel = 0;
             return new Result().OutOfFuel();
+        }
+
+        SpentFuel = _startFuel - Fuel;
         return new Result();
     }
 }

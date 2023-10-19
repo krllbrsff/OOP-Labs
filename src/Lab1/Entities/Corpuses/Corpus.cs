@@ -11,43 +11,46 @@ public abstract class Corpus : IDamageable
 
     public bool HasAntiNitrineEmitter { get; init; }
 
-    public Result TakeDamage(IEnvironment environment)
+    public Result TakeDamage(IEnvironment environment, IShip ship)
     {
         environment = environment ?? throw new ArgumentNullException(nameof(environment));
+        var result = new Result();
 
         foreach (IObstacle obstacle in environment.Obstacles)
         {
-            while (obstacle.Quantity >= 0)
+            while (obstacle.Quantity > 0)
             {
+                if (HasAntiNitrineEmitter && environment is NitrineParticlesNebulae) return result;
+
                 switch (obstacle)
                 {
                     case Asteroid:
                         HealthPoints -= IDamageable.DefaultHealthPoint / MaxAsteroidCollisions;
                         obstacle.DecreaseQuantity();
                         if (IsAlive()) break;
-                        else return new Result().ShipIsDestroyed();
+                        else return result.ShipIsDestroyed();
 
                     case Meteorite:
                         HealthPoints -= IDamageable.DefaultHealthPoint / MaxMeteoriteCollisions;
                         obstacle.DecreaseQuantity();
                         if (IsAlive()) break;
-                        else return new Result().ShipIsDestroyed();
+                        else return result.ShipIsDestroyed();
 
                     case Antimatter:
-                        return new Result().CrewIsDead();
+                        return result.CrewIsDead();
 
                     case Whale:
-                        return new Result().ShipIsDestroyed();
+                        return result.ShipIsDestroyed();
                 }
             }
         }
 
-        return new Result();
+        return result;
     }
 
     public bool IsAlive()
     {
-        if (HealthPoints > 0)
+        if (HealthPoints >= 0)
             return true;
         else return false;
     }

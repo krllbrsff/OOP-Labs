@@ -6,5 +6,5 @@ public interface IEnvironment
     public int Distance { get; }
     public Collection<IObstacle> Obstacles { get; }
 
-    public Collection<IObstacle> GetCorrectObstacles();
+    public Collection<IObstacle> GetCorrectObstacles(Collection<IObstacle> obstacles);
 }
