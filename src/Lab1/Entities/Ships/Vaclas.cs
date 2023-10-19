@@ -12,5 +12,6 @@ internal class Vaclas : IShip
     public IEngine ImpulseEngine { get; }
     public IEngine JumpEngine { get; }
     public Deflector Deflector { get; }
+
     public Corpus Corpus { get; }
 }
