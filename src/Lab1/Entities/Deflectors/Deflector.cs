@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 public abstract class Deflector : IDamageable
 {
     public int MaxAsteroidCollisions { get; init; }
@@ -14,12 +12,12 @@ public abstract class Deflector : IDamageable
     public bool PhotonicDeflector { get; protected set; }
     public int PhotonicDeflectorHP { get; protected set; }
 
-    public Result TakeDamage(IEnvironment environment)
+    public Result TakeDamage(IEnvironment environment, IShip ship)
     {
-        environment = environment ?? throw new ArgumentNullException(nameof(environment));
-
         foreach (IObstacle obstacle in environment.Obstacles)
         {
+            if (ship.Corpus.HasAntiNitrineEmitter && environment is NitrineParticlesNebulae) return new Result();
+
             while (obstacle.Quantity > 0)
             {
                 switch (obstacle)
@@ -27,12 +25,14 @@ public abstract class Deflector : IDamageable
                     case Asteroid:
                         HealthPoints -= IDamageable.DefaultHealthPoint / MaxAsteroidCollisions;
                         obstacle.DecreaseQuantity();
+
                         if (IsAlive()) break;
                         else return new Result();
 
                     case Meteorite:
                         HealthPoints -= IDamageable.DefaultHealthPoint / MaxMeteoriteCollisions;
                         obstacle.DecreaseQuantity();
+
                         if (IsAlive()) break;
                         else return new Result();
 
@@ -48,10 +48,18 @@ public abstract class Deflector : IDamageable
                         }
 
                     case Whale:
-                        HealthPoints -= IDamageable.DefaultHealthPoint / MaxWhaleCollisions;
-                        obstacle.DecreaseQuantity();
-                        if (IsAlive()) break;
-                        else return new Result();
+                        if (MaxWhaleCollisions > 0)
+                        {
+                            HealthPoints -= IDamageable.DefaultHealthPoint / MaxWhaleCollisions;
+                            obstacle.DecreaseQuantity();
+
+                            if (IsAlive()) break;
+                            else return new Result();
+                        }
+                        else
+                        {
+                            return new Result();
+                        }
                 }
             }
         }
@@ -61,8 +69,6 @@ public abstract class Deflector : IDamageable
 
     public bool IsAlive()
     {
-        if (HealthPoints > 0)
-            return true;
-        else return false;
+        return HealthPoints >= 0;
     }
 }

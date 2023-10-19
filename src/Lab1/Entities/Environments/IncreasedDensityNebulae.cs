@@ -5,22 +5,23 @@ internal class IncreasedDensityNebulae : IEnvironment
 {
     public IncreasedDensityNebulae(int length, Collection<IObstacle> obstacles)
     {
-        Obstacles = obstacles;
+        Obstacles = GetCorrectObstacles(obstacles);
         Distance = length;
     }
 
     public int Distance { get; }
     public Collection<IObstacle> Obstacles { get; }
 
-    public Collection<IObstacle> GetCorrectObstacles()
+    public Collection<IObstacle> GetCorrectObstacles(Collection<IObstacle> obstacles)
     {
-        var obstacles = new Collection<IObstacle>();
-        foreach (IObstacle obstacle in Obstacles)
+        var correctObstacles = new Collection<IObstacle>();
+
+        foreach (IObstacle obstacle in obstacles)
         {
             if (obstacle is Antimatter)
-                obstacles.Add(obstacle);
+                correctObstacles.Add(obstacle);
         }
 
-        return obstacles;
+        return correctObstacles;
     }
 }

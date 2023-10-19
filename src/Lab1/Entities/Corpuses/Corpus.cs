@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 public abstract class Corpus : IDamageable
 {
     public double HealthPoints { get; protected set; } = IDamageable.DefaultHealthPoint;
@@ -11,14 +9,14 @@ public abstract class Corpus : IDamageable
 
     public bool HasAntiNitrineEmitter { get; init; }
 
-    public Result TakeDamage(IEnvironment environment)
+    public Result TakeDamage(IEnvironment environment, IShip ship)
     {
-        environment = environment ?? throw new ArgumentNullException(nameof(environment));
-
         foreach (IObstacle obstacle in environment.Obstacles)
         {
-            while (obstacle.Quantity >= 0)
+            while (obstacle.Quantity > 0)
             {
+                if (HasAntiNitrineEmitter && environment is NitrineParticlesNebulae) return new Result();
+
                 switch (obstacle)
                 {
                     case Asteroid:
@@ -47,8 +45,6 @@ public abstract class Corpus : IDamageable
 
     public bool IsAlive()
     {
-        if (HealthPoints > 0)
-            return true;
-        else return false;
+        return HealthPoints >= 0;
     }
 }

@@ -2,6 +2,7 @@
 public interface IEngine
 {
     public double Fuel { get; }
+    public double SpentFuel { get; }
     public double Distance { get; }
     public double Time { get; }
 

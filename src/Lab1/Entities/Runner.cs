@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace Itmo.ObjectOrientedProgramming.Lab1.Entities;
 public class Runner
@@ -8,9 +7,10 @@ public class Runner
     {
         Ship = ship;
         Environments = environments;
+        Result = new Result();
     }
 
-    public Result? Result { get; private set; }
+    public Result Result { get; private set; }
     public IShip Ship { get; }
     private Collection<IEnvironment> Environments { get; }
     public Result Run()
@@ -19,32 +19,32 @@ public class Runner
 
         foreach (IEnvironment environment in Environments)
         {
-            if (Result is null) throw new ArgumentNullException();
+            if (Ship.Deflector != null && Ship.Deflector.IsAlive())
+                Result = Ship.Deflector.TakeDamage(environment, Ship);
 
-            if (Ship?.Deflector != null && Ship.Deflector.IsAlive())
-                Result = Ship.Deflector.TakeDamage(environment);
-
-            if (Result?.FinalMessage is Result.Results.Success)
-                Result = Ship?.Corpus?.TakeDamage(environment);
+            if (Result.FinalMessage is Result.Results.Success)
+                Result = Ship.Corpus.TakeDamage(environment, Ship);
             else break;
 
-            switch (environment)
+            if (Result.FinalMessage is Result.Results.Success)
             {
-                case OpenSpace:
-                    Result = Ship?.ImpulseEngine.AddDistance(environment); break;
+                switch (environment)
+                {
+                    case OpenSpace:
+                        Result = Ship.ImpulseEngine.AddDistance(environment); break;
 
-                case IncreasedDensityNebulae:
-                    if (Ship?.JumpEngine is null)
-                        Result?.OutOfFuel();
-                    else
-                        Result = Ship?.JumpEngine.AddDistance(environment); break;
+                    case IncreasedDensityNebulae:
+                        if (Ship.JumpEngine is null)
+                            Result.OutOfFuel();
+                        else
+                            Result = Ship.JumpEngine.AddDistance(environment); break;
 
-                case NitrineParticlesNebulae:
-                    Result = Ship?.ImpulseEngine.AddDistance(environment); break;
+                    case NitrineParticlesNebulae:
+                        Result = Ship.ImpulseEngine.AddDistance(environment); break;
+                }
             }
         }
 
-        if (Result is null) throw new ArgumentNullException();
         return Result;
     }
 }

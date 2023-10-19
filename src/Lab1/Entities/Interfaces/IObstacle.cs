@@ -3,5 +3,6 @@
 public interface IObstacle
 {
     public int Quantity { get; }
+
     public void DecreaseQuantity();
 }
