@@ -1,4 +1,5 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
+
 public class WiFiAdapter
 {
     public WiFiAdapter(string wifiStandardVersion, bool hasBluetoothModule, string pcieVersion, int powerConsumption)

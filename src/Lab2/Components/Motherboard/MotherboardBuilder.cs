@@ -1,15 +1,15 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
 public class MotherboardBuilder
 {
-    private string socket;
+    private string? socket;
     private int pcieLanes;
     private int sataPorts;
-    private string chipset;
-    private string ddrStandard;
+    private string? chipset;
+    private string? ddrStandard;
     private int ramSlots;
-    private string formFactor;
-    private string biosType;
-    private string biosVersion;
+    private string? formFactor;
+    private bool supportsXMP;
+    private BIOS bios;
 
     public MotherboardBuilder(Motherboard motherboard)
     {
@@ -20,8 +20,8 @@ public class MotherboardBuilder
         ddrStandard = motherboard.DDRStandard;
         ramSlots = motherboard.RamSlots;
         formFactor = motherboard.FormFactor;
-        biosType = motherboard.BiosType;
-        biosVersion = motherboard.BiosVersion;
+        bios = motherboard.BIOS;
+        supportsXMP = motherboard.SupportsXMP;
     }
 
     public MotherboardBuilder SetSocket(string socket)
@@ -66,20 +66,14 @@ public class MotherboardBuilder
         return this;
     }
 
-    public MotherboardBuilder SetBiosType(string biosType)
+    public MotherboardBuilder SetBIOS(BIOS bios)
     {
-        this.biosType = biosType;
-        return this;
-    }
-
-    public MotherboardBuilder SetBiosVersion(string biosVersion)
-    {
-        this.biosVersion = biosVersion;
+        this.bios = bios;
         return this;
     }
 
     public Motherboard Build()
     {
-        return new Motherboard(socket, pcieLanes, sataPorts, chipset, ddrStandard, ramSlots, formFactor, biosType, biosVersion);
+        return new Motherboard(socket ?? string.Empty, pcieLanes, sataPorts, chipset ?? string.Empty, ddrStandard ?? string.Empty, ramSlots, formFactor ?? string.Empty, supportsXMP, bios);
     }
 }

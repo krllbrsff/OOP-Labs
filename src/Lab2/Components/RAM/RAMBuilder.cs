@@ -1,9 +1,11 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
+﻿using System.Collections.ObjectModel;
+
+namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
 public class RAMBuilder
 {
     private int capacityGB;
-    private string jedecFrequenciesAndVoltage;
-    private string xmpProfiles;
+    private string frequency;
+    private Collection<XMPProfile> xmpProfiles;
     private string formFactor;
     private string ddrVersion;
     private int powerConsumption;
@@ -11,7 +13,7 @@ public class RAMBuilder
     public RAMBuilder(RAM ram)
     {
         capacityGB = ram.CapacityGB;
-        jedecFrequenciesAndVoltage = ram.JEDECFrequenciesAndVoltage;
+        frequency = ram.JEDECFrequenciesAndVoltage;
         xmpProfiles = ram.XMPProfiles;
         formFactor = ram.FormFactor;
         ddrVersion = ram.DDRVersion;
@@ -24,13 +26,13 @@ public class RAMBuilder
         return this;
     }
 
-    public RAMBuilder SetJEDECFrequenciesAndVoltage(string jedecFrequenciesAndVoltage)
+    public RAMBuilder SetJEDECFrequenciesAndVoltage(string frequency)
     {
-        this.jedecFrequenciesAndVoltage = jedecFrequenciesAndVoltage;
+        this.frequency = frequency;
         return this;
     }
 
-    public RAMBuilder SetXMPProfiles(string xmpProfiles)
+    public RAMBuilder SetXMPProfiles(Collection<XMPProfile> xmpProfiles)
     {
         this.xmpProfiles = xmpProfiles;
         return this;
@@ -56,6 +58,6 @@ public class RAMBuilder
 
     public RAM Build()
     {
-        return new RAM(capacityGB, jedecFrequenciesAndVoltage, xmpProfiles, formFactor, ddrVersion, powerConsumption);
+        return new RAM(capacityGB, frequency, xmpProfiles, formFactor, ddrVersion, powerConsumption);
     }
 }

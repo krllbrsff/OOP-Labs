@@ -12,12 +12,12 @@ public class CPU
         EnergyConsumption = energyConsumption;
     }
 
-    public string Name { get; }
-    public string Socket { get; }
+    public string? Name { get; }
+    public string? Socket { get; }
     public bool IntegratedGraphics { get; }
     public int CoreCount { get; }
     public double CoreFrequency { get; }
-    public string ROMFrequencies { get; }
+    public string? ROMFrequencies { get; }
     public int TDP { get; }
     public int EnergyConsumption { get; }
 }
