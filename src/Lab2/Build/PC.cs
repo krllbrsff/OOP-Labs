@@ -1,51 +1,42 @@
 ﻿using System.Collections.ObjectModel;
 using Itmo.ObjectOrientedProgramming.Lab2.Components;
-using Newtonsoft.Json;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Build;
+
 public class PC
 {
-    private PC(CPU cpu, GPU? gpu, Motherboard motherboard, CPUCooler cpuCooler, ReadOnlyCollection<RAM> ram, ReadOnlyCollection<HDD>? hdd, ReadOnlyCollection<SSD>? ssd, WiFiAdapter? wifiAdapter, Corpus corpus, PowerSupply powerSupply)
-    {
-        CPU = cpu;
-        GPU = gpu;
-        Motherboard = motherboard;
-        CPUCooler = cpuCooler;
-        RAM = ram;
-        HDD = hdd;
-        SSD = ssd;
-        WiFiAdapter = wifiAdapter;
-        Corpus = corpus;
-        PowerSupply = powerSupply;
-    }
+    private PC() { }
 
-    public CPU CPU { get; }
-    public GPU? GPU { get; }
-    public Motherboard Motherboard { get; }
-    public CPUCooler CPUCooler { get; }
-    public ReadOnlyCollection<RAM> RAM { get; }
-    public ReadOnlyCollection<HDD>? HDD { get; }
-    public ReadOnlyCollection<SSD>? SSD { get; }
-    public WiFiAdapter? WiFiAdapter { get; }
-    public Corpus Corpus { get; }
-    public PowerSupply PowerSupply { get; }
+    public CPU? CPU { get; private set; }
+    public GPU? GPU { get; private set; }
+    public Motherboard? Motherboard { get; private set; }
+    public CPUCooler? CPUCooler { get; private set; }
+    public ReadOnlyCollection<RAM>? RAM { get; private set; }
+    public ReadOnlyCollection<HDD>? HDD { get; private set; }
+    public ReadOnlyCollection<SSD>? SSD { get; private set; }
+    public WiFiAdapter? WiFiAdapter { get; private set; }
+    public Corpus? Corpus { get; private set; }
+    public PowerSupply? PowerSupply { get; private set; }
 
     public class PCBuilder
     {
-        private CPU cpu;
+        private CPU? cpu;
         private GPU? gpu;
-        private Motherboard motherboard;
-        private CPUCooler cpuCooler;
-        private ReadOnlyCollection<RAM> ram;
+        private Motherboard? motherboard;
+        private CPUCooler? cpuCooler;
+        private ReadOnlyCollection<RAM>? ram;
         private ReadOnlyCollection<HDD>? hdd;
         private ReadOnlyCollection<SSD>? ssd;
         private WiFiAdapter? wifiAdapter;
-        private Corpus corpus;
-        private PowerSupply powerSupply;
-        private PCBuilder(PC pc)
+        private Corpus? corpus;
+        private PowerSupply? powerSupply;
+
+        public PCBuilder() { }
+
+        public PCBuilder(PC pc)
         {
-            gpu = pc.GPU;
             cpu = pc.CPU;
+            gpu = pc.GPU;
             motherboard = pc.Motherboard;
             cpuCooler = pc.CPUCooler;
             ram = pc.RAM;
@@ -104,7 +95,7 @@ public class PC
             return this;
         }
 
-        public PCBuilder SetCase(Corpus corpus)
+        public PCBuilder SetCorpus(Corpus corpus)
         {
             this.corpus = corpus;
             return this;
@@ -118,7 +109,19 @@ public class PC
 
         public PC Build()
         {
-            return new PC(cpu, gpu, motherboard, cpuCooler, ram, hdd, ssd, wifiAdapter, corpus, powerSupply);
+            return new PC
+            {
+                CPU = cpu,
+                RAM = ram,
+                HDD = hdd,
+                SSD = ssd,
+                GPU = gpu,
+                Motherboard = motherboard,
+                CPUCooler = cpuCooler,
+                Corpus = corpus,
+                PowerSupply = powerSupply,
+                WiFiAdapter = wifiAdapter,
+            };
         }
     }
 }
