@@ -1,47 +1,53 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
+
 public class GPU
 {
-    private GPU(string dimensions, int videoMemoryGB, string pcieVersion, string chipFrequency, int powerConsumption)
-    {
-        Dimensions = dimensions;
-        VideoMemoryGB = videoMemoryGB;
-        PCIEVersion = pcieVersion;
-        ChipFrequency = chipFrequency;
-        PowerConsumption = powerConsumption;
-    }
-
-    public string Dimensions { get; }
-    public int VideoMemoryGB { get; }
-    public string PCIEVersion { get; }
-    public string ChipFrequency { get; }
-    public int PowerConsumption { get; }
+    private GPU() { }
+    public string? Name { get; private set; }
+    public int Height { get; private set; }
+    public int VideoMemory { get; private set; }
+    public string? PCIEVersion { get; private set; }
+    public string? ChipFrequency { get; private set; }
+    public int PowerConsumption { get; private set; }
 
     public class GPUBuilder
     {
-        private string dimensions;
-        private int videoMemoryGB;
-        private string pcieVersion;
-        private string chipFrequency;
+        private string? name;
+        private int height;
+        private int videoMemory;
+        private string? pcieVersion;
+        private string? chipFrequency;
         private int powerConsumption;
+
+        public GPUBuilder()
+        {
+        }
 
         public GPUBuilder(GPU gpu)
         {
-            dimensions = gpu.Dimensions;
-            videoMemoryGB = gpu.VideoMemoryGB;
+            name = gpu.Name;
+            height = gpu.Height;
+            videoMemory = gpu.VideoMemory;
             pcieVersion = gpu.PCIEVersion;
             chipFrequency = gpu.ChipFrequency;
             powerConsumption = gpu.PowerConsumption;
         }
 
-        public GPUBuilder SetDimensions(string dimensions)
+        public GPUBuilder SetName(string name)
         {
-            this.dimensions = dimensions;
+            this.name = name;
             return this;
         }
 
-        public GPUBuilder SetVideoMemoryGB(int videoMemoryGB)
+        public GPUBuilder SetHeight(int height)
         {
-            this.videoMemoryGB = videoMemoryGB;
+            this.height = height;
+            return this;
+        }
+
+        public GPUBuilder SetVideoMemory(int videoMemory)
+        {
+            this.videoMemory = videoMemory;
             return this;
         }
 
@@ -65,7 +71,15 @@ public class GPU
 
         public GPU Build()
         {
-            return new GPU(dimensions, videoMemoryGB, pcieVersion, chipFrequency, powerConsumption);
+            return new GPU
+            {
+                Name = name,
+                Height = height,
+                VideoMemory = videoMemory,
+                PCIEVersion = pcieVersion,
+                ChipFrequency = chipFrequency,
+                PowerConsumption = powerConsumption,
+            };
         }
     }
 }

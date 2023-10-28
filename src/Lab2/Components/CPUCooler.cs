@@ -1,28 +1,38 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
+﻿using System.Collections.ObjectModel;
+
+namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
+
 public class CPUCooler
 {
-    private CPUCooler(string dimensions, string supportedSockets, int maxTDP)
-    {
-        Dimensions = dimensions;
-        SupportedSockets = supportedSockets;
-        MaxTDP = maxTDP;
-    }
-
-    public string Dimensions { get; }
-    public string SupportedSockets { get; }
-    public int MaxTDP { get; }
+    private CPUCooler() { }
+    public string? Name { get; private set; }
+    public string? Dimensions { get; private set; }
+    public Collection<string>? SupportedSockets { get; private set; }
+    public int MaxTDP { get; private set; }
 
     public class CPUCoolerBuilder
     {
-        private string dimensions;
-        private string supportedSockets;
+        private string? name;
+        private string? dimensions;
+        private Collection<string>? supportedSockets;
         private int maxTDP;
+
+        public CPUCoolerBuilder()
+        {
+        }
 
         public CPUCoolerBuilder(CPUCooler cpuCooler)
         {
+            name = cpuCooler.Name;
             dimensions = cpuCooler.Dimensions;
             supportedSockets = cpuCooler.SupportedSockets;
             maxTDP = cpuCooler.MaxTDP;
+        }
+
+        public CPUCoolerBuilder SetName(string name)
+        {
+            this.name = name;
+            return this;
         }
 
         public CPUCoolerBuilder SetDimensions(string dimensions)
@@ -31,7 +41,7 @@ public class CPUCooler
             return this;
         }
 
-        public CPUCoolerBuilder SetSupportedSockets(string supportedSockets)
+        public CPUCoolerBuilder SetSupportedSockets(Collection<string> supportedSockets)
         {
             this.supportedSockets = supportedSockets;
             return this;
@@ -45,7 +55,13 @@ public class CPUCooler
 
         public CPUCooler Build()
         {
-            return new CPUCooler(dimensions, supportedSockets, maxTDP);
+            return new CPUCooler
+            {
+                Name = name,
+                Dimensions = dimensions,
+                SupportedSockets = supportedSockets,
+                MaxTDP = maxTDP,
+            };
         }
     }
 }

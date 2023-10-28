@@ -2,32 +2,36 @@
 
 public class WiFiAdapter
 {
-    private WiFiAdapter(string wifiStandardVersion, bool hasBluetoothModule, string pcieVersion, int powerConsumption)
-    {
-        WiFiStandardVersion = wifiStandardVersion;
-        HasBluetoothModule = hasBluetoothModule;
-        PCIEVersion = pcieVersion;
-        PowerConsumption = powerConsumption;
-    }
-
-    public string WiFiStandardVersion { get; }
-    public bool HasBluetoothModule { get; }
-    public string PCIEVersion { get; }
-    public int PowerConsumption { get; }
+    private WiFiAdapter() { }
+    public string? Name { get; private set; }
+    public string? WiFiStandardVersion { get; private set; }
+    public bool BluetoothModule { get; private set; }
+    public double PCIEVersion { get; private set; }
+    public int PowerConsumption { get; private set; }
 
     public class WiFiAdapterBuilder
     {
-        private string wifiStandardVersion;
-        private bool hasBluetoothModule;
-        private string pcieVersion;
+        private string? name;
+        private string? wifiStandardVersion;
+        private bool bluetoothModule;
+        private double pcieVersion;
         private int powerConsumption;
+
+        public WiFiAdapterBuilder() { }
 
         public WiFiAdapterBuilder(WiFiAdapter wifiAdapter)
         {
+            name = wifiAdapter.Name;
             wifiStandardVersion = wifiAdapter.WiFiStandardVersion;
-            hasBluetoothModule = wifiAdapter.HasBluetoothModule;
+            bluetoothModule = wifiAdapter.BluetoothModule;
             pcieVersion = wifiAdapter.PCIEVersion;
             powerConsumption = wifiAdapter.PowerConsumption;
+        }
+
+        public WiFiAdapterBuilder SetName(string name)
+        {
+            this.name = name;
+            return this;
         }
 
         public WiFiAdapterBuilder SetWiFiStandardVersion(string wifiStandardVersion)
@@ -36,13 +40,19 @@ public class WiFiAdapter
             return this;
         }
 
-        public WiFiAdapterBuilder SetHasBluetoothModule(bool hasBluetoothModule)
+        public WiFiAdapterBuilder WithBluetoothModule()
         {
-            this.hasBluetoothModule = hasBluetoothModule;
+            bluetoothModule = true;
             return this;
         }
 
-        public WiFiAdapterBuilder SetPCIEVersion(string pcieVersion)
+        public WiFiAdapterBuilder WithoutBluetoothModule()
+        {
+            bluetoothModule = false;
+            return this;
+        }
+
+        public WiFiAdapterBuilder SetPCIEVersion(double pcieVersion)
         {
             this.pcieVersion = pcieVersion;
             return this;
@@ -56,7 +66,14 @@ public class WiFiAdapter
 
         public WiFiAdapter Build()
         {
-            return new WiFiAdapter(wifiStandardVersion, hasBluetoothModule, pcieVersion, powerConsumption);
+            return new WiFiAdapter
+            {
+                Name = name,
+                WiFiStandardVersion = wifiStandardVersion,
+                BluetoothModule = bluetoothModule,
+                PCIEVersion = pcieVersion,
+                PowerConsumption = powerConsumption,
+            };
         }
     }
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "NZXT H510",
+    "MaxGPUSize": "300 mm",
+    "SupportedMotherboardFormats": [ "ATX", "Micro-ATX" ],
+    "Dimensions": "200x450x400 mm"
+  },
+  {
+    "Name": "Fractal Design Meshify C",
+    "MaxGPUSize": "350 mm",
+    "SupportedMotherboardFormats": [ "ATX" ],
+    "Dimensions": "220x500x450 mm"
+  },
+  {
+    "Name": "Phanteks Enthoo Pro M",
+    "MaxGPUSize": "280 mm",
+    "SupportedMotherboardFormats": [ "Micro-ATX", "Mini-ITX" ],
+    "Dimensions": "180x350x300 mm"
+  }
+]

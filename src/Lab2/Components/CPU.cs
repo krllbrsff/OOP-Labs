@@ -1,28 +1,16 @@
-﻿using System;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
 
-namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
 public class CPU
 {
-    private CPU(string name, int coreCount, double coreFrequency, string socket, string romFrequencies, int tdp, int energyConsumption, bool integratedGraphics)
-    {
-        Name = name;
-        CoreCount = coreCount;
-        CoreFrequency = coreFrequency;
-        Socket = socket;
-        ROMFrequencies = romFrequencies;
-        TDP = tdp;
-        EnergyConsumption = energyConsumption;
-        IntegratedGraphics = integratedGraphics;
-    }
-
-    public string? Name { get; }
-    public string? Socket { get; }
-    public bool IntegratedGraphics { get; }
-    public int CoreCount { get; }
-    public double CoreFrequency { get; }
-    public string? ROMFrequencies { get; }
-    public int TDP { get; }
-    public int EnergyConsumption { get; }
+    private CPU() { }
+    public string? Name { get; private set; }
+    public string? Socket { get; private set; }
+    public bool IntegratedGraphics { get; private set; }
+    public int CoreCount { get; private set; }
+    public double CoreFrequency { get; private set; }
+    public string? ROMFrequencies { get; private set; }
+    public int TDP { get; private set; }
+    public int EnergyConsumption { get; private set; }
 
     public class CPUBuilder
     {
@@ -35,10 +23,10 @@ public class CPU
         private int tdp;
         private int energyConsumption;
 
+        public CPUBuilder() { }
+
         public CPUBuilder(CPU cpu)
         {
-            if (cpu == null) throw new ArgumentNullException(nameof(cpu));
-
             name = cpu.Name;
             coreCount = cpu.CoreCount;
             coreFrequency = cpu.CoreFrequency;
@@ -73,13 +61,13 @@ public class CPU
             return this;
         }
 
-        public CPUBuilder AddIntegratedGraphics()
+        public CPUBuilder WithIntegratedGraphics()
         {
             integratedGraphics = true;
             return this;
         }
 
-        public CPUBuilder RemoveIntegratedGraphics()
+        public CPUBuilder WithoutIntegratedGraphics()
         {
             integratedGraphics = false;
             return this;
@@ -105,7 +93,17 @@ public class CPU
 
         public CPU Build()
         {
-            return new CPU(name ?? string.Empty, coreCount, coreFrequency, socket ?? string.Empty, romFrequencies ?? string.Empty, tdp, energyConsumption, integratedGraphics);
+            return new CPU
+            {
+                Name = name,
+                CoreCount = coreCount,
+                CoreFrequency = coreFrequency,
+                Socket = socket,
+                ROMFrequencies = romFrequencies,
+                TDP = tdp,
+                EnergyConsumption = energyConsumption,
+                IntegratedGraphics = integratedGraphics,
+            };
         }
     }
 }

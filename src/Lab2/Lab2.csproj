@@ -5,14 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Components\Cooler\" />
-      <Folder Include="Components\Corpus\" />
-      <Folder Include="Components\CPU\" />
-      <Folder Include="Components\GPU\" />
-      <Folder Include="Components\Motherboard\" />
-      <Folder Include="Components\RAM\" />
-      <Folder Include="Components\ROM\" />
-      <Folder Include="Components\WIFIAdapter\" />
+      <Folder Include="Stock\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" />
     </ItemGroup>
 
 </Project>

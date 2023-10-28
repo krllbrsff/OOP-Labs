@@ -1,42 +1,51 @@
 ﻿using System.Collections.ObjectModel;
 
 namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
+
 public class RAM
 {
-    private RAM(int capacityGB, string jedecFrequenciesAndVoltage, Collection<XMPProfile> xmpProfiles, string formFactor, string ddrVersion, int powerConsumption)
-    {
-        CapacityGB = capacityGB;
-        JEDECFrequenciesAndVoltage = jedecFrequenciesAndVoltage;
-        XMPProfiles = xmpProfiles;
-        FormFactor = formFactor;
-        DDRVersion = ddrVersion;
-        PowerConsumption = powerConsumption;
-    }
-
-    public int CapacityGB { get; }
-    public string JEDECFrequenciesAndVoltage { get; }
-    public Collection<XMPProfile> XMPProfiles { get; }
-    public string FormFactor { get; }
-    public string DDRVersion { get; }
-    public int PowerConsumption { get; }
+    private RAM() { }
+    public string? Name { get; private set; }
+    public int CapacityGB { get; private set; }
+    public int Frequency { get; private set; }
+    public double Voltage { get; private set; }
+    public Collection<XMPProfile>? XMPProfiles { get; private set; }
+    public string? FormFactor { get; private set; }
+    public string? DDRVersion { get; private set; }
+    public int PowerConsumption { get; private set; }
 
     public class RAMBuilder
     {
+        private string? name;
         private int capacityGB;
-        private string frequency;
-        private Collection<XMPProfile> xmpProfiles;
-        private string formFactor;
-        private string ddrVersion;
+        private int frequency;
+        private double voltage;
+        private Collection<XMPProfile>? xmpProfiles;
+        private string? formFactor;
+        private string? ddrVersion;
         private int powerConsumption;
+
+        public RAMBuilder()
+        {
+            xmpProfiles = new Collection<XMPProfile>();
+        }
 
         public RAMBuilder(RAM ram)
         {
+            name = ram.Name;
             capacityGB = ram.CapacityGB;
-            frequency = ram.JEDECFrequenciesAndVoltage;
+            frequency = ram.Frequency;
+            voltage = ram.Voltage;
             xmpProfiles = ram.XMPProfiles;
             formFactor = ram.FormFactor;
             ddrVersion = ram.DDRVersion;
             powerConsumption = ram.PowerConsumption;
+        }
+
+        public RAMBuilder SetName(string name)
+        {
+            this.name = name;
+            return this;
         }
 
         public RAMBuilder SetCapacityGB(int capacityGB)
@@ -45,15 +54,26 @@ public class RAM
             return this;
         }
 
-        public RAMBuilder SetJEDECFrequenciesAndVoltage(string frequency)
+        public RAMBuilder SetFrequency(int frequency)
         {
             this.frequency = frequency;
             return this;
         }
 
-        public RAMBuilder SetXMPProfiles(Collection<XMPProfile> xmpProfiles)
+        public RAMBuilder SetVoltage(double voltage)
         {
-            this.xmpProfiles = xmpProfiles;
+            this.voltage = voltage;
+            return this;
+        }
+
+        public RAMBuilder AddXMPProfile(XMPProfile xmpProfile)
+        {
+            if (xmpProfiles == null)
+            {
+                xmpProfiles = new Collection<XMPProfile>();
+            }
+
+            xmpProfiles.Add(xmpProfile);
             return this;
         }
 
@@ -77,7 +97,17 @@ public class RAM
 
         public RAM Build()
         {
-            return new RAM(capacityGB, frequency, xmpProfiles, formFactor, ddrVersion, powerConsumption);
+            return new RAM
+            {
+                Name = name,
+                CapacityGB = capacityGB,
+                Frequency = frequency,
+                Voltage = voltage,
+                XMPProfiles = xmpProfiles,
+                FormFactor = formFactor,
+                DDRVersion = ddrVersion,
+                PowerConsumption = powerConsumption,
+            };
         }
     }
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "Noctua NH-D15",
+    "Dimensions": "120x120x25 mm",
+    "SupportedSockets": [ "LGA 1200", "AM4" ],
+    "MaxTDP": 150
+  },
+  {
+    "Name": "Corsair H115i RGB Platinum",
+    "Dimensions": "140x140x25 mm",
+    "SupportedSockets": [ "LGA 1200", "AM4", "LGA 1700" ],
+    "MaxTDP": 180
+  },
+  {
+    "Name": "Cooler Master Hyper 212 RGB",
+    "Dimensions": "120x120x30 mm",
+    "SupportedSockets": [ "LGA 1200", "AM4" ],
+    "MaxTDP": 120
+  }
+]

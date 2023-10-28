@@ -1,26 +1,24 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
+
 public class BIOS
 {
-    private BIOS(string type, string supportedCPUs)
-    {
-        Type = type;
-        SupportedCPUs = supportedCPUs;
-    }
-
-    public string? Type { get; }
-    public string? SupportedCPUs { get; }
+    private BIOS() { }
+    public string? Type { get; private set; }
+    public string? Version { get; private set; }
 
     public class BIOSBuilder
     {
         private string? type;
-        private string? supportedCPUs;
+        private string? version;
 
-        public BIOSBuilder() { }
+        public BIOSBuilder()
+        {
+        }
 
         public BIOSBuilder(BIOS bios)
         {
             type = bios.Type;
-            supportedCPUs = bios.SupportedCPUs;
+            version = bios.Version;
         }
 
         public BIOSBuilder SetType(string type)
@@ -29,15 +27,19 @@ public class BIOS
             return this;
         }
 
-        public BIOSBuilder SetSupportedCPUs(string supportedCPUs)
+        public BIOSBuilder SetVersion(string version)
         {
-            this.supportedCPUs = supportedCPUs;
+            this.version = version;
             return this;
         }
 
         public BIOS Build()
         {
-            return new BIOS(type ?? string.Empty, supportedCPUs ?? string.Empty);
+            return new BIOS
+            {
+                Type = type,
+                Version = version,
+            };
         }
     }
 }

@@ -1,29 +1,34 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
+
 public class HDD
 {
-    private HDD(int capacityGB, int spindleSpeed, int powerConsumption)
-    {
-        CapacityGB = capacityGB;
-        SpindleSpeed = spindleSpeed;
-        PowerConsumption = powerConsumption;
-    }
-
-    public int CapacityGB { get; }
-    public int SpindleSpeed { get; }
-    public int PowerConsumption { get; }
+    private HDD() { }
+    public string? Name { get; private set; }
+    public int CapacityGB { get; private set; }
+    public int SpindleSpeed { get; private set; }
+    public int PowerConsumption { get; private set; }
 
     public class HDDBuilder
     {
+        private string? name;
         private int capacityGB;
         private int spindleSpeed;
         private int powerConsumption;
 
         public HDDBuilder() { }
+
         public HDDBuilder(HDD hdd)
         {
+            name = hdd.Name;
             capacityGB = hdd.CapacityGB;
             spindleSpeed = hdd.SpindleSpeed;
             powerConsumption = hdd.PowerConsumption;
+        }
+
+        public HDDBuilder SetName(string name)
+        {
+            this.name = name;
+            return this;
         }
 
         public HDDBuilder SetCapacityGB(int capacityGB)
@@ -46,7 +51,13 @@ public class HDD
 
         public HDD Build()
         {
-            return new HDD(capacityGB, spindleSpeed, powerConsumption);
+            return new HDD
+            {
+                Name = name,
+                CapacityGB = capacityGB,
+                SpindleSpeed = spindleSpeed,
+                PowerConsumption = powerConsumption,
+            };
         }
     }
 }

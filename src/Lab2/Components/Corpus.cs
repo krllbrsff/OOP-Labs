@@ -1,28 +1,36 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
+﻿using System.Collections.ObjectModel;
+
+namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
+
 public class Corpus
 {
-    private Corpus(string maxGPUSize, string supportedMotherboardFormats, string dimensions)
-    {
-        MaxGPUSize = maxGPUSize;
-        SupportedMotherboardFormats = supportedMotherboardFormats;
-        Dimensions = dimensions;
-    }
-
-    public string MaxGPUSize { get; }
-    public string SupportedMotherboardFormats { get; }
-    public string Dimensions { get; }
+    private Corpus() { }
+    public string? Name { get; private set; }
+    public string? MaxGPUSize { get; private set; }
+    public Collection<string>? SupportedMotherboardFormats { get; private set; }
+    public string? Dimensions { get; private set; }
 
     public class CorpusBuilder
     {
-        private string maxGPUSize;
-        private string supportedMotherboardFormats;
-        private string dimensions;
+        private string? name;
+        private string? maxGPUSize;
+        private Collection<string>? supportedMotherboardFormats;
+        private string? dimensions;
+
+        public CorpusBuilder() { }
 
         public CorpusBuilder(Corpus pcCase)
         {
+            name = pcCase.Name;
             maxGPUSize = pcCase.MaxGPUSize;
             supportedMotherboardFormats = pcCase.SupportedMotherboardFormats;
             dimensions = pcCase.Dimensions;
+        }
+
+        public CorpusBuilder SetName(string name)
+        {
+            this.name = name;
+            return this;
         }
 
         public CorpusBuilder SetMaxGPUSize(string maxGPUSize)
@@ -31,7 +39,7 @@ public class Corpus
             return this;
         }
 
-        public CorpusBuilder SetSupportedMotherboardFormats(string supportedMotherboardFormats)
+        public CorpusBuilder SetSupportedMotherboardFormats(Collection<string> supportedMotherboardFormats)
         {
             this.supportedMotherboardFormats = supportedMotherboardFormats;
             return this;
@@ -45,7 +53,13 @@ public class Corpus
 
         public Corpus Build()
         {
-            return new Corpus(maxGPUSize, supportedMotherboardFormats, dimensions);
+            return new Corpus
+            {
+                Name = name,
+                MaxGPUSize = maxGPUSize,
+                SupportedMotherboardFormats = supportedMotherboardFormats,
+                Dimensions = dimensions,
+            };
         }
     }
 }

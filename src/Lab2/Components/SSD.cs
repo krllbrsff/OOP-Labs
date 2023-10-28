@@ -1,32 +1,39 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
+
 public class SSD
 {
-    private SSD(string connectionType, int capacityGB, string maxSpeed, int powerConsumption)
-    {
-        ConnectionType = connectionType;
-        CapacityGB = capacityGB;
-        MaxSpeed = maxSpeed;
-        PowerConsumption = powerConsumption;
-    }
-
-    public string ConnectionType { get; }
-    public int CapacityGB { get; }
-    public string MaxSpeed { get; }
-    public int PowerConsumption { get; }
+    private SSD() { }
+    public string? Name { get; private set; }
+    public string? ConnectionType { get; private set; }
+    public int CapacityGB { get; private set; }
+    public int MaxSpeed { get; private set; }
+    public int PowerConsumption { get; private set; }
 
     public class SSDBuilder
     {
-        private string connectionType;
+        private string? name;
+        private string? connectionType;
         private int capacityGB;
-        private string maxSpeed;
+        private int maxSpeed;
         private int powerConsumption;
+
+        public SSDBuilder()
+        {
+        }
 
         public SSDBuilder(SSD ssd)
         {
+            name = ssd.Name;
             connectionType = ssd.ConnectionType;
             capacityGB = ssd.CapacityGB;
             maxSpeed = ssd.MaxSpeed;
             powerConsumption = ssd.PowerConsumption;
+        }
+
+        public SSDBuilder SetName(string name)
+        {
+            this.name = name;
+            return this;
         }
 
         public SSDBuilder SetConnectionType(string connectionType)
@@ -41,7 +48,7 @@ public class SSD
             return this;
         }
 
-        public SSDBuilder SetMaxSpeed(string maxSpeed)
+        public SSDBuilder SetMaxSpeed(int maxSpeed)
         {
             this.maxSpeed = maxSpeed;
             return this;
@@ -55,7 +62,14 @@ public class SSD
 
         public SSD Build()
         {
-            return new SSD(connectionType, capacityGB, maxSpeed, powerConsumption);
+            return new SSD
+            {
+                Name = name,
+                ConnectionType = connectionType,
+                CapacityGB = capacityGB,
+                MaxSpeed = maxSpeed,
+                PowerConsumption = powerConsumption,
+            };
         }
     }
 }

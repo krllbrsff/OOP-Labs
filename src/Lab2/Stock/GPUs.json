@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "NVIDIA GeForce RTX 3080",
+    "Height": 120,
+    "VideoMemory": 10,
+    "PCIEVersion": "PCIe 4.0",
+    "ChipFrequency": "1700 MHz",
+    "PowerConsumption": 320
+  },
+  {
+    "Name": "AMD Radeon RX 6900 XT",
+    "Height": 130,
+    "VideoMemory": 16,
+    "PCIEVersion": "PCIe 4.0",
+    "ChipFrequency": "2100 MHz",
+    "PowerConsumption": 300
+  },
+  {
+    "Name": "NVIDIA GeForce RTX 3070",
+    "Height": 115,
+    "VideoMemory": 8,
+    "PCIEVersion": "PCIe 4.0",
+    "ChipFrequency": "1500 MHz",
+    "PowerConsumption": 220
+  }
+]

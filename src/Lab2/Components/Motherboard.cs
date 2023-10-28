@@ -2,52 +2,50 @@
 
 public class Motherboard
 {
-    private Motherboard(string socket, int pcieLanes, int sataPorts, string chipset, string ddrStandard, int ramSlots, string formFactor, bool xmp, BIOS bios)
-    {
-        Socket = socket;
-        PCIELanes = pcieLanes;
-        SataPorts = sataPorts;
-        Chipset = chipset;
-        DDRStandard = ddrStandard;
-        RamSlots = ramSlots;
-        FormFactor = formFactor;
-        SupportsXMP = xmp;
-        BIOS = bios;
-    }
-
-    public string? Socket { get; }
-    public int PCIELanes { get; }
-    public int SataPorts { get; }
-    public string? Chipset { get; }
-    public string? DDRStandard { get; }
-    public int RamSlots { get; }
-    public string? FormFactor { get; }
-    public bool SupportsXMP { get; }
-    public BIOS BIOS { get; }
+    private Motherboard() { }
+    public string? Name { get; private set; }
+    public string? Socket { get; private set; }
+    public int PCIELines { get; private set; }
+    public int SataPorts { get; private set; }
+    public Chipset? Chipset { get; private set; }
+    public string? DDRStandard { get; private set; }
+    public int RamSlots { get; private set; }
+    public string? FormFactor { get; private set; }
+    public BIOS? BIOS { get; private set; }
 
     public class MotherboardBuilder
     {
+        private string? name;
         private string? socket;
-        private int pcieLanes;
+        private int pcieLines;
         private int sataPorts;
-        private string? chipset;
+        private Chipset? chipset;
         private string? ddrStandard;
         private int ramSlots;
         private string? formFactor;
-        private bool supportsXMP;
-        private BIOS bios;
+        private BIOS? bios;
+
+        public MotherboardBuilder()
+        {
+        }
 
         public MotherboardBuilder(Motherboard motherboard)
         {
+            name = motherboard.Name;
             socket = motherboard.Socket;
-            pcieLanes = motherboard.PCIELanes;
+            pcieLines = motherboard.PCIELines;
             sataPorts = motherboard.SataPorts;
             chipset = motherboard.Chipset;
             ddrStandard = motherboard.DDRStandard;
             ramSlots = motherboard.RamSlots;
             formFactor = motherboard.FormFactor;
             bios = motherboard.BIOS;
-            supportsXMP = motherboard.SupportsXMP;
+        }
+
+        public MotherboardBuilder SetName(string name)
+        {
+            this.name = name;
+            return this;
         }
 
         public MotherboardBuilder SetSocket(string socket)
@@ -56,9 +54,9 @@ public class Motherboard
             return this;
         }
 
-        public MotherboardBuilder SetPCIELanes(int pcieLanes)
+        public MotherboardBuilder SetPCIELines(int pcieLines)
         {
-            this.pcieLanes = pcieLanes;
+            this.pcieLines = pcieLines;
             return this;
         }
 
@@ -68,7 +66,7 @@ public class Motherboard
             return this;
         }
 
-        public MotherboardBuilder SetChipset(string chipset)
+        public MotherboardBuilder SetChipset(Chipset? chipset)
         {
             this.chipset = chipset;
             return this;
@@ -92,7 +90,7 @@ public class Motherboard
             return this;
         }
 
-        public MotherboardBuilder SetBIOS(BIOS bios)
+        public MotherboardBuilder SetBIOS(BIOS? bios)
         {
             this.bios = bios;
             return this;
@@ -100,7 +98,18 @@ public class Motherboard
 
         public Motherboard Build()
         {
-            return new Motherboard(socket ?? string.Empty, pcieLanes, sataPorts, chipset ?? string.Empty, ddrStandard ?? string.Empty, ramSlots, formFactor ?? string.Empty, supportsXMP, bios);
+            return new Motherboard
+            {
+                Name = name,
+                Socket = socket,
+                PCIELines = pcieLines,
+                SataPorts = sataPorts,
+                Chipset = chipset,
+                DDRStandard = ddrStandard,
+                RamSlots = ramSlots,
+                FormFactor = formFactor,
+                BIOS = bios,
+            };
         }
     }
 }
