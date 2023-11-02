@@ -3,11 +3,11 @@
 public class SSD
 {
     private SSD() { }
-    public string? Name { get; private set; }
-    public string? ConnectionType { get; private set; }
-    public int CapacityGB { get; private set; }
-    public int MaxSpeed { get; private set; }
-    public int PowerConsumption { get; private set; }
+    public string? Name { get; init; }
+    public string? ConnectionType { get; init; }
+    public int CapacityGB { get; init; }
+    public int MaxSpeed { get; init; }
+    public int EnergyConsumption { get; init; }
 
     public class SSDBuilder
     {
@@ -15,7 +15,7 @@ public class SSD
         private string? connectionType;
         private int capacityGB;
         private int maxSpeed;
-        private int powerConsumption;
+        private int energyConsumption;
 
         public SSDBuilder()
         {
@@ -27,7 +27,7 @@ public class SSD
             connectionType = ssd.ConnectionType;
             capacityGB = ssd.CapacityGB;
             maxSpeed = ssd.MaxSpeed;
-            powerConsumption = ssd.PowerConsumption;
+            energyConsumption = ssd.EnergyConsumption;
         }
 
         public SSDBuilder SetName(string name)
@@ -54,9 +54,9 @@ public class SSD
             return this;
         }
 
-        public SSDBuilder SetPowerConsumption(int powerConsumption)
+        public SSDBuilder SetPowerConsumption(int energyConsumption)
         {
-            this.powerConsumption = powerConsumption;
+            this.energyConsumption = energyConsumption;
             return this;
         }
 
@@ -68,7 +68,7 @@ public class SSD
                 ConnectionType = connectionType,
                 CapacityGB = capacityGB,
                 MaxSpeed = maxSpeed,
-                PowerConsumption = powerConsumption,
+                EnergyConsumption = energyConsumption,
             };
         }
     }

@@ -3,12 +3,12 @@
 public class GPU
 {
     private GPU() { }
-    public string? Name { get; private set; }
-    public int Height { get; private set; }
-    public int VideoMemory { get; private set; }
-    public string? PCIEVersion { get; private set; }
-    public string? ChipFrequency { get; private set; }
-    public int PowerConsumption { get; private set; }
+    public string? Name { get; init; }
+    public int Height { get; init; }
+    public int VideoMemory { get; init; }
+    public string? PCIEVersion { get; init; }
+    public string? ChipFrequency { get; init; }
+    public int EnergyConsumption { get; init; }
 
     public class GPUBuilder
     {
@@ -17,7 +17,7 @@ public class GPU
         private int videoMemory;
         private string? pcieVersion;
         private string? chipFrequency;
-        private int powerConsumption;
+        private int energyConsumption;
 
         public GPUBuilder()
         {
@@ -30,7 +30,7 @@ public class GPU
             videoMemory = gpu.VideoMemory;
             pcieVersion = gpu.PCIEVersion;
             chipFrequency = gpu.ChipFrequency;
-            powerConsumption = gpu.PowerConsumption;
+            energyConsumption = gpu.EnergyConsumption;
         }
 
         public GPUBuilder SetName(string name)
@@ -63,9 +63,9 @@ public class GPU
             return this;
         }
 
-        public GPUBuilder SetPowerConsumption(int powerConsumption)
+        public GPUBuilder SetPowerConsumption(int energyConsumption)
         {
-            this.powerConsumption = powerConsumption;
+            this.energyConsumption = energyConsumption;
             return this;
         }
 
@@ -78,7 +78,7 @@ public class GPU
                 VideoMemory = videoMemory,
                 PCIEVersion = pcieVersion,
                 ChipFrequency = chipFrequency,
-                PowerConsumption = powerConsumption,
+                EnergyConsumption = energyConsumption,
             };
         }
     }

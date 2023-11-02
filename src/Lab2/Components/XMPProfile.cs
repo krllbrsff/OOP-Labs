@@ -3,9 +3,9 @@
 public class XMPProfile
 {
     private XMPProfile() { }
-    public string? Name { get; private set; }
-    public int Frequency { get; private set; }
-    public double Voltage { get; private set; }
+    public string? Name { get; init; }
+    public int Frequency { get; init; }
+    public double Voltage { get; init; }
 
     public class XMPProfileBuilder
     {

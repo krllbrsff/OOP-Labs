@@ -3,11 +3,11 @@
 public class WiFiAdapter
 {
     private WiFiAdapter() { }
-    public string? Name { get; private set; }
-    public string? WiFiStandardVersion { get; private set; }
-    public bool BluetoothModule { get; private set; }
-    public double PCIEVersion { get; private set; }
-    public int PowerConsumption { get; private set; }
+    public string? Name { get; init; }
+    public string? WiFiStandardVersion { get; init; }
+    public bool BluetoothModule { get; init; }
+    public double PCIEVersion { get; init; }
+    public int EnergyConsumption { get; init; }
 
     public class WiFiAdapterBuilder
     {
@@ -15,7 +15,7 @@ public class WiFiAdapter
         private string? wifiStandardVersion;
         private bool bluetoothModule;
         private double pcieVersion;
-        private int powerConsumption;
+        private int energyConsumption;
 
         public WiFiAdapterBuilder() { }
 
@@ -25,7 +25,7 @@ public class WiFiAdapter
             wifiStandardVersion = wifiAdapter.WiFiStandardVersion;
             bluetoothModule = wifiAdapter.BluetoothModule;
             pcieVersion = wifiAdapter.PCIEVersion;
-            powerConsumption = wifiAdapter.PowerConsumption;
+            energyConsumption = wifiAdapter.EnergyConsumption;
         }
 
         public WiFiAdapterBuilder SetName(string name)
@@ -58,9 +58,9 @@ public class WiFiAdapter
             return this;
         }
 
-        public WiFiAdapterBuilder SetPowerConsumption(int powerConsumption)
+        public WiFiAdapterBuilder SetPowerConsumption(int energyConsumption)
         {
-            this.powerConsumption = powerConsumption;
+            this.energyConsumption = energyConsumption;
             return this;
         }
 
@@ -72,7 +72,7 @@ public class WiFiAdapter
                 WiFiStandardVersion = wifiStandardVersion,
                 BluetoothModule = bluetoothModule,
                 PCIEVersion = pcieVersion,
-                PowerConsumption = powerConsumption,
+                EnergyConsumption = energyConsumption,
             };
         }
     }

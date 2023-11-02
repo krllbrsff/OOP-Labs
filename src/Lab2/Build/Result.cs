@@ -1,4 +1,15 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab2.Build;
-public  class Result
+public enum Result
 {
+    PCIsValid,
+    WithoutGuarantee,
+    LowPowerReserve,
+    CPUMotherboardConflict,
+    MotherboardRAMConflict,
+    MotherboardROMConflict,
+    MotherboardCoolerConflict,
+    PowerSupplyPowerIsNotEnough,
+    MotherboardCorpusConflict,
+    NecesseryComponentMissed,
+    GPUCorpusConflict,
 }

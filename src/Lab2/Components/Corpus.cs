@@ -5,15 +5,15 @@ namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
 public class Corpus
 {
     private Corpus() { }
-    public string? Name { get; private set; }
-    public string? MaxGPUSize { get; private set; }
-    public Collection<string>? SupportedMotherboardFormats { get; private set; }
-    public string? Dimensions { get; private set; }
+    public string? Name { get; init; }
+    public int MaxGPUSize { get; init; }
+    public Collection<string>? SupportedMotherboardFormats { get; init; }
+    public string? Dimensions { get; init; }
 
     public class CorpusBuilder
     {
         private string? name;
-        private string? maxGPUSize;
+        private int maxGPUSize;
         private Collection<string>? supportedMotherboardFormats;
         private string? dimensions;
 
@@ -33,7 +33,7 @@ public class Corpus
             return this;
         }
 
-        public CorpusBuilder SetMaxGPUSize(string maxGPUSize)
+        public CorpusBuilder SetMaxGPUSize(int maxGPUSize)
         {
             this.maxGPUSize = maxGPUSize;
             return this;

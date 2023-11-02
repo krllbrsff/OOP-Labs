@@ -3,17 +3,17 @@
 public class HDD
 {
     private HDD() { }
-    public string? Name { get; private set; }
-    public int CapacityGB { get; private set; }
-    public int SpindleSpeed { get; private set; }
-    public int PowerConsumption { get; private set; }
+    public string? Name { get; init; }
+    public int CapacityGB { get; init; }
+    public int SpindleSpeed { get; init; }
+    public int EnergyConsumption { get; init; }
 
     public class HDDBuilder
     {
         private string? name;
         private int capacityGB;
         private int spindleSpeed;
-        private int powerConsumption;
+        private int energyConsumption;
 
         public HDDBuilder() { }
 
@@ -22,7 +22,7 @@ public class HDD
             name = hdd.Name;
             capacityGB = hdd.CapacityGB;
             spindleSpeed = hdd.SpindleSpeed;
-            powerConsumption = hdd.PowerConsumption;
+            energyConsumption = hdd.EnergyConsumption;
         }
 
         public HDDBuilder SetName(string name)
@@ -43,9 +43,9 @@ public class HDD
             return this;
         }
 
-        public HDDBuilder SetPowerConsumption(int powerConsumption)
+        public HDDBuilder SetPowerConsumption(int energyConsumption)
         {
-            this.powerConsumption = powerConsumption;
+            this.energyConsumption = energyConsumption;
             return this;
         }
 
@@ -56,7 +56,7 @@ public class HDD
                 Name = name,
                 CapacityGB = capacityGB,
                 SpindleSpeed = spindleSpeed,
-                PowerConsumption = powerConsumption,
+                EnergyConsumption = energyConsumption,
             };
         }
     }

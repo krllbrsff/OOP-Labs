@@ -3,14 +3,14 @@
 public class CPU
 {
     private CPU() { }
-    public string? Name { get; private set; }
-    public string? Socket { get; private set; }
-    public bool IntegratedGraphics { get; private set; }
-    public int CoreCount { get; private set; }
-    public double CoreFrequency { get; private set; }
-    public string? ROMFrequencies { get; private set; }
-    public int TDP { get; private set; }
-    public int EnergyConsumption { get; private set; }
+    public string? Name { get; init; }
+    public string? Socket { get; init; }
+    public bool IntegratedGraphics { get; init; }
+    public int CoreCount { get; init; }
+    public double CoreFrequency { get; init; }
+    public int RAMFrequency { get; init; }
+    public int TDP { get; init; }
+    public int EnergyConsumption { get; init; }
 
     public class CPUBuilder
     {
@@ -19,7 +19,7 @@ public class CPU
         private bool integratedGraphics;
         private int coreCount;
         private double coreFrequency;
-        private string? romFrequencies;
+        private int ramFrequency;
         private int tdp;
         private int energyConsumption;
 
@@ -32,7 +32,7 @@ public class CPU
             coreFrequency = cpu.CoreFrequency;
             integratedGraphics = cpu.IntegratedGraphics;
             socket = cpu.Socket;
-            romFrequencies = cpu.ROMFrequencies;
+            ramFrequency = cpu.RAMFrequency;
             tdp = cpu.TDP;
             energyConsumption = cpu.EnergyConsumption;
         }
@@ -73,9 +73,9 @@ public class CPU
             return this;
         }
 
-        public CPUBuilder SetROMFrequencies(string romFrequencies)
+        public CPUBuilder SetROMFrequencies(int ramFrequency)
         {
-            this.romFrequencies = romFrequencies;
+            this.ramFrequency = ramFrequency;
             return this;
         }
 
@@ -99,7 +99,7 @@ public class CPU
                 CoreCount = coreCount,
                 CoreFrequency = coreFrequency,
                 Socket = socket,
-                ROMFrequencies = romFrequencies,
+                RAMFrequency = ramFrequency,
                 TDP = tdp,
                 EnergyConsumption = energyConsumption,
                 IntegratedGraphics = integratedGraphics,

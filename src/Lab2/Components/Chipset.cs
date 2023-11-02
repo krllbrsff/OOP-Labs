@@ -5,9 +5,9 @@ namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
 public class Chipset
 {
     private Chipset() { }
-    public string? Name { get; private set; }
-    public Collection<int>? MemoryFrequencies { get; private set; }
-    public bool XMP { get; private set; }
+    public string? Name { get; init; }
+    public Collection<int>? MemoryFrequencies { get; init; }
+    public bool XMP { get; init; }
 
     public class ChipsetBuilder
     {

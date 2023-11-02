@@ -3,8 +3,8 @@
 public class BIOS
 {
     private BIOS() { }
-    public string? Type { get; private set; }
-    public string? Version { get; private set; }
+    public string? Type { get; init; }
+    public string? Version { get; init; }
 
     public class BIOSBuilder
     {

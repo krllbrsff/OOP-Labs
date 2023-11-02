@@ -18,7 +18,7 @@
     ],
     "FormFactor": "DIMM",
     "DDRVersion": "DDR4",
-    "PowerConsumption": 10
+    "EnergyConsumption": 10
   },
   {
     "Name": "G.Skill Ripjaws V 32GB",
@@ -39,7 +39,7 @@
     ],
     "FormFactor": "DIMM",
     "DDRVersion": "DDR4",
-    "PowerConsumption": 15
+    "EnergyConsumption": 15
   },
   {
     "Name": "Crucial 8GB",
@@ -49,6 +49,6 @@
     "XMPProfiles": [],
     "FormFactor": "SO-DIMM",
     "DDRVersion": "DDR4",
-    "PowerConsumption": 5
+    "EnergyConsumption": 5
   }
 ]

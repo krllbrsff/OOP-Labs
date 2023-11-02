@@ -7,16 +7,16 @@ public class PC
 {
     private PC() { }
 
-    public CPU? CPU { get; private set; }
-    public GPU? GPU { get; private set; }
-    public Motherboard? Motherboard { get; private set; }
-    public CPUCooler? CPUCooler { get; private set; }
-    public ReadOnlyCollection<RAM>? RAM { get; private set; }
-    public ReadOnlyCollection<HDD>? HDD { get; private set; }
-    public ReadOnlyCollection<SSD>? SSD { get; private set; }
-    public WiFiAdapter? WiFiAdapter { get; private set; }
-    public Corpus? Corpus { get; private set; }
-    public PowerSupply? PowerSupply { get; private set; }
+    public CPU? CPU { get; init; }
+    public GPU? GPU { get; init; }
+    public Motherboard? Motherboard { get; init; }
+    public CPUCooler? CPUCooler { get; init; }
+    public Collection<RAM>? RAM { get; init; }
+    public Collection<HDD>? HDD { get; init; }
+    public Collection<SSD>? SSD { get; init; }
+    public WiFiAdapter? WiFiAdapter { get; init; }
+    public Corpus? Corpus { get; init; }
+    public PowerSupply? PowerSupply { get; init; }
 
     public class PCBuilder
     {
@@ -24,14 +24,19 @@ public class PC
         private GPU? gpu;
         private Motherboard? motherboard;
         private CPUCooler? cpuCooler;
-        private ReadOnlyCollection<RAM>? ram;
-        private ReadOnlyCollection<HDD>? hdd;
-        private ReadOnlyCollection<SSD>? ssd;
+        private Collection<RAM>? ram;
+        private Collection<HDD>? hdd;
+        private Collection<SSD>? ssd;
         private WiFiAdapter? wifiAdapter;
         private Corpus? corpus;
         private PowerSupply? powerSupply;
 
-        public PCBuilder() { }
+        public PCBuilder()
+        {
+            ram = new Collection<RAM>();
+            ssd = new Collection<SSD>();
+            hdd = new Collection<HDD>();
+        }
 
         public PCBuilder(PC pc)
         {
@@ -71,21 +76,21 @@ public class PC
             return this;
         }
 
-        public PCBuilder SetRAM(ReadOnlyCollection<RAM> ram)
+        public PCBuilder SetRAM(RAM ram)
         {
-            this.ram = ram;
+            this.ram?.Add(ram);
             return this;
         }
 
-        public PCBuilder SetHDD(ReadOnlyCollection<HDD>? hdd)
+        public PCBuilder SetHDD(HDD hdd)
         {
-            this.hdd = hdd;
+            this.hdd?.Add(hdd);
             return this;
         }
 
-        public PCBuilder SetSSD(ReadOnlyCollection<SSD>? ssd)
+        public PCBuilder SetSSD(SSD ssd)
         {
-            this.ssd = ssd;
+            this.ssd?.Add(ssd);
             return this;
         }
 

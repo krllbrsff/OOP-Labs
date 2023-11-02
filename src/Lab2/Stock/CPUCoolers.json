@@ -6,6 +6,12 @@
     "MaxTDP": 150
   },
   {
+    "Name": "Noctua NH-D12",
+    "Dimensions": "120x120x25 mm",
+    "SupportedSockets": [ "LGA 1200", "AM4" ],
+    "MaxTDP": 120
+  },
+  {
     "Name": "Corsair H115i RGB Platinum",
     "Dimensions": "140x140x25 mm",
     "SupportedSockets": [ "LGA 1200", "AM4", "LGA 1700" ],

@@ -3,15 +3,15 @@
 public class Motherboard
 {
     private Motherboard() { }
-    public string? Name { get; private set; }
-    public string? Socket { get; private set; }
-    public int PCIELines { get; private set; }
-    public int SataPorts { get; private set; }
-    public Chipset? Chipset { get; private set; }
-    public string? DDRStandard { get; private set; }
-    public int RamSlots { get; private set; }
-    public string? FormFactor { get; private set; }
-    public BIOS? BIOS { get; private set; }
+    public string? Name { get; init; }
+    public string? Socket { get; init; }
+    public int PCIELines { get; init; }
+    public int SATAPorts { get; init; }
+    public Chipset? Chipset { get; init; }
+    public string? DDRStandard { get; init; }
+    public int RamSlots { get; init; }
+    public string? FormFactor { get; init; }
+    public BIOS? BIOS { get; init; }
 
     public class MotherboardBuilder
     {
@@ -34,7 +34,7 @@ public class Motherboard
             name = motherboard.Name;
             socket = motherboard.Socket;
             pcieLines = motherboard.PCIELines;
-            sataPorts = motherboard.SataPorts;
+            sataPorts = motherboard.SATAPorts;
             chipset = motherboard.Chipset;
             ddrStandard = motherboard.DDRStandard;
             ramSlots = motherboard.RamSlots;
@@ -103,7 +103,7 @@ public class Motherboard
                 Name = name,
                 Socket = socket,
                 PCIELines = pcieLines,
-                SataPorts = sataPorts,
+                SATAPorts = sataPorts,
                 Chipset = chipset,
                 DDRStandard = ddrStandard,
                 RamSlots = ramSlots,

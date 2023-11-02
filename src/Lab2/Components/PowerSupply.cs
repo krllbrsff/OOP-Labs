@@ -4,8 +4,8 @@ public class PowerSupply
 {
     private PowerSupply() { }
 
-    public string? Name { get; private set; }
-    public int Power { get; private set; }
+    public string? Name { get; init; }
+    public int Power { get; init; }
 
     public class PowerSupplyBuilder
     {

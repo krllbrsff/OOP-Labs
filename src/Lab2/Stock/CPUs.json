@@ -5,7 +5,7 @@
     "IntegratedGraphics": false,
     "CoreCount": 8,
     "CoreFrequency": 3.5,
-    "ROMFrequencies": "DDR4-3200",
+    "RAMFrequency": 3200,
     "TDP": 125,
     "EnergyConsumption": 150
   },
@@ -15,17 +15,17 @@
     "IntegratedGraphics": false,
     "CoreCount": 12,
     "CoreFrequency": 3.7,
-    "ROMFrequencies": "DDR4-3600",
+    "RAMFrequency": 3600,
     "TDP": 105,
     "EnergyConsumption": 142
   },
   {
-    "Name": "Intel Core i5-11600",
+    "Name": "Intel Core i5-11600", 
     "Socket": "LGA 1200",
     "IntegratedGraphics": true,
     "CoreCount": 6,
     "CoreFrequency": 3.9,
-    "ROMFrequencies": "DDR4-3200",
+    "RAMFrequency": 3200,
     "TDP": 125,
     "EnergyConsumption": 130
   }

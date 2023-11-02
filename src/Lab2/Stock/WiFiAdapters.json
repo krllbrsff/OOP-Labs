@@ -4,20 +4,20 @@
     "WiFiStandard": "802.11ac",
     "BluetoothModule": true,
     "PCIEVersion": 1.0,
-    "PowerConsumption": 3
+    "EnergyConsumption": 3
   },
   {
     "Name": "ASUS PCE-AX58BT",
     "WiFiStandard": "802.11ax (Wi-Fi 6)",
     "BluetoothModule": true,
     "PCIEVersion": 3.0,
-    "PowerConsumption": 5
+    "EnergyConsumption": 5
   },
   {
     "Name": "GIGABYTE GC-WB1733D-I",
     "WiFiStandard": "802.11ax (Wi-Fi 6E)",
     "BluetoothModule": true,
     "PCIEVersion": 4.0,
-    "PowerConsumption": 7
+    "EnergyConsumption": 7
   }
 ]

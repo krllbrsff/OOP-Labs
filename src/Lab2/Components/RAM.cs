@@ -5,14 +5,14 @@ namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
 public class RAM
 {
     private RAM() { }
-    public string? Name { get; private set; }
-    public int CapacityGB { get; private set; }
-    public int Frequency { get; private set; }
-    public double Voltage { get; private set; }
-    public Collection<XMPProfile>? XMPProfiles { get; private set; }
-    public string? FormFactor { get; private set; }
-    public string? DDRVersion { get; private set; }
-    public int PowerConsumption { get; private set; }
+    public string? Name { get; init; }
+    public int CapacityGB { get; init; }
+    public int Frequency { get; init; }
+    public double Voltage { get; init; }
+    public Collection<XMPProfile>? XMPProfiles { get; init; }
+    public string? FormFactor { get; init; }
+    public string? DDRVersion { get; init; }
+    public int EnergyConsumption { get; init; }
 
     public class RAMBuilder
     {
@@ -23,7 +23,7 @@ public class RAM
         private Collection<XMPProfile>? xmpProfiles;
         private string? formFactor;
         private string? ddrVersion;
-        private int powerConsumption;
+        private int energyConsumption;
 
         public RAMBuilder()
         {
@@ -39,7 +39,7 @@ public class RAM
             xmpProfiles = ram.XMPProfiles;
             formFactor = ram.FormFactor;
             ddrVersion = ram.DDRVersion;
-            powerConsumption = ram.PowerConsumption;
+            energyConsumption = ram.EnergyConsumption;
         }
 
         public RAMBuilder SetName(string name)
@@ -89,9 +89,9 @@ public class RAM
             return this;
         }
 
-        public RAMBuilder SetPowerConsumption(int powerConsumption)
+        public RAMBuilder SetPowerConsumption(int energyConsumption)
         {
-            this.powerConsumption = powerConsumption;
+            this.energyConsumption = energyConsumption;
             return this;
         }
 
@@ -106,7 +106,7 @@ public class RAM
                 XMPProfiles = xmpProfiles,
                 FormFactor = formFactor,
                 DDRVersion = ddrVersion,
-                PowerConsumption = powerConsumption,
+                EnergyConsumption = energyConsumption,
             };
         }
     }

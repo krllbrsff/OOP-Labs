@@ -5,10 +5,11 @@ namespace Itmo.ObjectOrientedProgramming.Lab2.Components;
 public class CPUCooler
 {
     private CPUCooler() { }
-    public string? Name { get; private set; }
-    public string? Dimensions { get; private set; }
-    public Collection<string>? SupportedSockets { get; private set; }
-    public int MaxTDP { get; private set; }
+
+    public string? Name { get; init; }
+    public string? Dimensions { get; init; }
+    public Collection<string>? SupportedSockets { get; init; }
+    public int MaxTDP { get; init; }
 
     public class CPUCoolerBuilder
     {
