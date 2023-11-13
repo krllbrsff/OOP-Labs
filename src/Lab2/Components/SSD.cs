@@ -11,11 +11,11 @@ public class SSD
 
     public class SSDBuilder
     {
-        private string? name;
-        private string? connectionType;
-        private int capacityGB;
-        private int maxSpeed;
-        private int energyConsumption;
+        private string? _name;
+        private string? _connectionType;
+        private int _capacityGB;
+        private int _maxSpeed;
+        private int _energyConsumption;
 
         public SSDBuilder()
         {
@@ -23,40 +23,40 @@ public class SSD
 
         public SSDBuilder(SSD ssd)
         {
-            name = ssd.Name;
-            connectionType = ssd.ConnectionType;
-            capacityGB = ssd.CapacityGB;
-            maxSpeed = ssd.MaxSpeed;
-            energyConsumption = ssd.EnergyConsumption;
+            _name = ssd.Name;
+            _connectionType = ssd.ConnectionType;
+            _capacityGB = ssd.CapacityGB;
+            _maxSpeed = ssd.MaxSpeed;
+            _energyConsumption = ssd.EnergyConsumption;
         }
 
         public SSDBuilder SetName(string name)
         {
-            this.name = name;
+            _name = name;
             return this;
         }
 
         public SSDBuilder SetConnectionType(string connectionType)
         {
-            this.connectionType = connectionType;
+            _connectionType = connectionType;
             return this;
         }
 
         public SSDBuilder SetCapacityGB(int capacityGB)
         {
-            this.capacityGB = capacityGB;
+            _capacityGB = capacityGB;
             return this;
         }
 
         public SSDBuilder SetMaxSpeed(int maxSpeed)
         {
-            this.maxSpeed = maxSpeed;
+            _maxSpeed = maxSpeed;
             return this;
         }
 
         public SSDBuilder SetPowerConsumption(int energyConsumption)
         {
-            this.energyConsumption = energyConsumption;
+            _energyConsumption = energyConsumption;
             return this;
         }
 
@@ -64,11 +64,11 @@ public class SSD
         {
             return new SSD
             {
-                Name = name,
-                ConnectionType = connectionType,
-                CapacityGB = capacityGB,
-                MaxSpeed = maxSpeed,
-                EnergyConsumption = energyConsumption,
+                Name = _name,
+                ConnectionType = _connectionType,
+                CapacityGB = _capacityGB,
+                MaxSpeed = _maxSpeed,
+                EnergyConsumption = _energyConsumption,
             };
         }
     }

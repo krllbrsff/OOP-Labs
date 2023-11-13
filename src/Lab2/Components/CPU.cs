@@ -14,80 +14,80 @@ public class CPU
 
     public class CPUBuilder
     {
-        private string? name;
-        private string? socket;
-        private bool integratedGraphics;
-        private int coreCount;
-        private double coreFrequency;
-        private int ramFrequency;
-        private int tdp;
-        private int energyConsumption;
+        private string? _name;
+        private string? _socket;
+        private bool _integratedGraphics;
+        private int _coreCount;
+        private double _coreFrequency;
+        private int _ramFrequency;
+        private int _tdp;
+        private int _energyConsumption;
 
         public CPUBuilder() { }
 
         public CPUBuilder(CPU cpu)
         {
-            name = cpu.Name;
-            coreCount = cpu.CoreCount;
-            coreFrequency = cpu.CoreFrequency;
-            integratedGraphics = cpu.IntegratedGraphics;
-            socket = cpu.Socket;
-            ramFrequency = cpu.RAMFrequency;
-            tdp = cpu.TDP;
-            energyConsumption = cpu.EnergyConsumption;
+            _name = cpu.Name;
+            _coreCount = cpu.CoreCount;
+            _coreFrequency = cpu.CoreFrequency;
+            _integratedGraphics = cpu.IntegratedGraphics;
+            _socket = cpu.Socket;
+            _ramFrequency = cpu.RAMFrequency;
+            _tdp = cpu.TDP;
+            _energyConsumption = cpu.EnergyConsumption;
         }
 
         public CPUBuilder SetName(string name)
         {
-            this.name = name;
+            _name = name;
             return this;
         }
 
         public CPUBuilder SetCoreFrequency(double frequency)
         {
-            coreFrequency = frequency;
+            _coreFrequency = frequency;
             return this;
         }
 
         public CPUBuilder SetCores(int cores)
         {
-            coreCount = cores;
+            _coreCount = cores;
             return this;
         }
 
         public CPUBuilder SetSocket(string socket)
         {
-            this.socket = socket;
+            _socket = socket;
             return this;
         }
 
         public CPUBuilder WithIntegratedGraphics()
         {
-            integratedGraphics = true;
+            _integratedGraphics = true;
             return this;
         }
 
         public CPUBuilder WithoutIntegratedGraphics()
         {
-            integratedGraphics = false;
+            _integratedGraphics = false;
             return this;
         }
 
         public CPUBuilder SetROMFrequencies(int ramFrequency)
         {
-            this.ramFrequency = ramFrequency;
+            _ramFrequency = ramFrequency;
             return this;
         }
 
         public CPUBuilder SetTDP(int tdp)
         {
-            this.tdp = tdp;
+            _tdp = tdp;
             return this;
         }
 
         public CPUBuilder SetEnergyConsumption(int energyConsumption)
         {
-            this.energyConsumption = energyConsumption;
+            _energyConsumption = energyConsumption;
             return this;
         }
 
@@ -95,14 +95,14 @@ public class CPU
         {
             return new CPU
             {
-                Name = name,
-                CoreCount = coreCount,
-                CoreFrequency = coreFrequency,
-                Socket = socket,
-                RAMFrequency = ramFrequency,
-                TDP = tdp,
-                EnergyConsumption = energyConsumption,
-                IntegratedGraphics = integratedGraphics,
+                Name = _name,
+                CoreCount = _coreCount,
+                CoreFrequency = _coreFrequency,
+                Socket = _socket,
+                RAMFrequency = _ramFrequency,
+                TDP = _tdp,
+                EnergyConsumption = _energyConsumption,
+                IntegratedGraphics = _integratedGraphics,
             };
         }
     }

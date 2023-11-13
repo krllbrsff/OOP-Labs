@@ -11,56 +11,56 @@ public class WiFiAdapter
 
     public class WiFiAdapterBuilder
     {
-        private string? name;
-        private string? wifiStandardVersion;
-        private bool bluetoothModule;
-        private double pcieVersion;
-        private int energyConsumption;
+        private string? _name;
+        private string? _wifiStandardVersion;
+        private bool _bluetoothModule;
+        private double _pcieVersion;
+        private int _energyConsumption;
 
         public WiFiAdapterBuilder() { }
 
         public WiFiAdapterBuilder(WiFiAdapter wifiAdapter)
         {
-            name = wifiAdapter.Name;
-            wifiStandardVersion = wifiAdapter.WiFiStandardVersion;
-            bluetoothModule = wifiAdapter.BluetoothModule;
-            pcieVersion = wifiAdapter.PCIEVersion;
-            energyConsumption = wifiAdapter.EnergyConsumption;
+            _name = wifiAdapter.Name;
+            _wifiStandardVersion = wifiAdapter.WiFiStandardVersion;
+            _bluetoothModule = wifiAdapter.BluetoothModule;
+            _pcieVersion = wifiAdapter.PCIEVersion;
+            _energyConsumption = wifiAdapter.EnergyConsumption;
         }
 
         public WiFiAdapterBuilder SetName(string name)
         {
-            this.name = name;
+            _name = name;
             return this;
         }
 
         public WiFiAdapterBuilder SetWiFiStandardVersion(string wifiStandardVersion)
         {
-            this.wifiStandardVersion = wifiStandardVersion;
+            _wifiStandardVersion = wifiStandardVersion;
             return this;
         }
 
         public WiFiAdapterBuilder WithBluetoothModule()
         {
-            bluetoothModule = true;
+            _bluetoothModule = true;
             return this;
         }
 
         public WiFiAdapterBuilder WithoutBluetoothModule()
         {
-            bluetoothModule = false;
+            _bluetoothModule = false;
             return this;
         }
 
         public WiFiAdapterBuilder SetPCIEVersion(double pcieVersion)
         {
-            this.pcieVersion = pcieVersion;
+            _pcieVersion = pcieVersion;
             return this;
         }
 
         public WiFiAdapterBuilder SetPowerConsumption(int energyConsumption)
         {
-            this.energyConsumption = energyConsumption;
+            _energyConsumption = energyConsumption;
             return this;
         }
 
@@ -68,11 +68,11 @@ public class WiFiAdapter
         {
             return new WiFiAdapter
             {
-                Name = name,
-                WiFiStandardVersion = wifiStandardVersion,
-                BluetoothModule = bluetoothModule,
-                PCIEVersion = pcieVersion,
-                EnergyConsumption = energyConsumption,
+                Name = _name,
+                WiFiStandardVersion = _wifiStandardVersion,
+                BluetoothModule = _bluetoothModule,
+                PCIEVersion = _pcieVersion,
+                EnergyConsumption = _energyConsumption,
             };
         }
     }

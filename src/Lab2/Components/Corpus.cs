@@ -12,42 +12,42 @@ public class Corpus
 
     public class CorpusBuilder
     {
-        private string? name;
-        private int maxGPUSize;
-        private Collection<string>? supportedMotherboardFormats;
-        private string? dimensions;
+        private string? _name;
+        private int _maxGPUSize;
+        private Collection<string>? _supportedMotherboardFormats;
+        private string? _dimensions;
 
         public CorpusBuilder() { }
 
         public CorpusBuilder(Corpus pcCase)
         {
-            name = pcCase.Name;
-            maxGPUSize = pcCase.MaxGPUSize;
-            supportedMotherboardFormats = pcCase.SupportedMotherboardFormats;
-            dimensions = pcCase.Dimensions;
+            _name = pcCase.Name;
+            _maxGPUSize = pcCase.MaxGPUSize;
+            _supportedMotherboardFormats = pcCase.SupportedMotherboardFormats;
+            _dimensions = pcCase.Dimensions;
         }
 
         public CorpusBuilder SetName(string name)
         {
-            this.name = name;
+            _name = name;
             return this;
         }
 
         public CorpusBuilder SetMaxGPUSize(int maxGPUSize)
         {
-            this.maxGPUSize = maxGPUSize;
+            _maxGPUSize = maxGPUSize;
             return this;
         }
 
         public CorpusBuilder SetSupportedMotherboardFormats(Collection<string> supportedMotherboardFormats)
         {
-            this.supportedMotherboardFormats = supportedMotherboardFormats;
+            _supportedMotherboardFormats = supportedMotherboardFormats;
             return this;
         }
 
         public CorpusBuilder SetDimensions(string dimensions)
         {
-            this.dimensions = dimensions;
+            _dimensions = dimensions;
             return this;
         }
 
@@ -55,10 +55,10 @@ public class Corpus
         {
             return new Corpus
             {
-                Name = name,
-                MaxGPUSize = maxGPUSize,
-                SupportedMotherboardFormats = supportedMotherboardFormats,
-                Dimensions = dimensions,
+                Name = _name,
+                MaxGPUSize = _maxGPUSize,
+                SupportedMotherboardFormats = _supportedMotherboardFormats,
+                Dimensions = _dimensions,
             };
         }
     }

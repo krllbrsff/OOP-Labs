@@ -20,95 +20,95 @@ public class PC
 
     public class PCBuilder
     {
-        private CPU? cpu;
-        private GPU? gpu;
-        private Motherboard? motherboard;
-        private CPUCooler? cpuCooler;
-        private Collection<RAM>? ram;
-        private Collection<HDD>? hdd;
-        private Collection<SSD>? ssd;
-        private WiFiAdapter? wifiAdapter;
-        private Corpus? corpus;
-        private PowerSupply? powerSupply;
+        private CPU? _cpu;
+        private GPU? _gpu;
+        private Motherboard? _motherboard;
+        private CPUCooler? _cpuCooler;
+        private Collection<RAM>? _ram;
+        private Collection<HDD>? _hdd;
+        private Collection<SSD>? _ssd;
+        private WiFiAdapter? _wifiAdapter;
+        private Corpus? _corpus;
+        private PowerSupply? _powerSupply;
 
         public PCBuilder()
         {
-            ram = new Collection<RAM>();
-            ssd = new Collection<SSD>();
-            hdd = new Collection<HDD>();
+            _ram = new Collection<RAM>();
+            _ssd = new Collection<SSD>();
+            _hdd = new Collection<HDD>();
         }
 
         public PCBuilder(PC pc)
         {
-            cpu = pc.CPU;
-            gpu = pc.GPU;
-            motherboard = pc.Motherboard;
-            cpuCooler = pc.CPUCooler;
-            ram = pc.RAM;
-            hdd = pc.HDD;
-            ssd = pc.SSD;
-            wifiAdapter = pc.WiFiAdapter;
-            corpus = pc.Corpus;
-            powerSupply = pc.PowerSupply;
+            _cpu = pc.CPU;
+            _gpu = pc.GPU;
+            _motherboard = pc.Motherboard;
+            _cpuCooler = pc.CPUCooler;
+            _ram = pc.RAM;
+            _hdd = pc.HDD;
+            _ssd = pc.SSD;
+            _wifiAdapter = pc.WiFiAdapter;
+            _corpus = pc.Corpus;
+            _powerSupply = pc.PowerSupply;
         }
 
         public PCBuilder SetCPU(CPU cpu)
         {
-            this.cpu = cpu;
+            _cpu = cpu;
             return this;
         }
 
         public PCBuilder SetGPU(GPU? gpu)
         {
-            this.gpu = gpu;
+            _gpu = gpu;
             return this;
         }
 
         public PCBuilder SetMotherboard(Motherboard motherboard)
         {
-            this.motherboard = motherboard;
+            _motherboard = motherboard;
             return this;
         }
 
         public PCBuilder SetCPUCooler(CPUCooler cpuCooler)
         {
-            this.cpuCooler = cpuCooler;
+            _cpuCooler = cpuCooler;
             return this;
         }
 
         public PCBuilder SetRAM(RAM ram)
         {
-            this.ram?.Add(ram);
+            _ram?.Add(ram);
             return this;
         }
 
         public PCBuilder SetHDD(HDD hdd)
         {
-            this.hdd?.Add(hdd);
+            _hdd?.Add(hdd);
             return this;
         }
 
         public PCBuilder SetSSD(SSD ssd)
         {
-            this.ssd?.Add(ssd);
+            _ssd?.Add(ssd);
             return this;
         }
 
         public PCBuilder SetWiFiAdapter(WiFiAdapter? wifiAdapter)
         {
-            this.wifiAdapter = wifiAdapter;
+            _wifiAdapter = wifiAdapter;
             return this;
         }
 
         public PCBuilder SetCorpus(Corpus corpus)
         {
-            this.corpus = corpus;
+            _corpus = corpus;
             return this;
         }
 
         public PCBuilder SetPowerSupply(PowerSupply powerSupply)
         {
-            this.powerSupply = powerSupply;
+            _powerSupply = powerSupply;
             return this;
         }
 
@@ -116,16 +116,16 @@ public class PC
         {
             return new PC
             {
-                CPU = cpu,
-                RAM = ram,
-                HDD = hdd,
-                SSD = ssd,
-                GPU = gpu,
-                Motherboard = motherboard,
-                CPUCooler = cpuCooler,
-                Corpus = corpus,
-                PowerSupply = powerSupply,
-                WiFiAdapter = wifiAdapter,
+                CPU = _cpu,
+                RAM = _ram,
+                HDD = _hdd,
+                SSD = _ssd,
+                GPU = _gpu,
+                Motherboard = _motherboard,
+                CPUCooler = _cpuCooler,
+                Corpus = _corpus,
+                PowerSupply = _powerSupply,
+                WiFiAdapter = _wifiAdapter,
             };
         }
     }

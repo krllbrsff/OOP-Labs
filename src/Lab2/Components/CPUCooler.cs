@@ -13,10 +13,10 @@ public class CPUCooler
 
     public class CPUCoolerBuilder
     {
-        private string? name;
-        private string? dimensions;
-        private Collection<string>? supportedSockets;
-        private int maxTDP;
+        private string? _name;
+        private string? _dimensions;
+        private Collection<string>? _supportedSockets;
+        private int _maxTDP;
 
         public CPUCoolerBuilder()
         {
@@ -24,33 +24,33 @@ public class CPUCooler
 
         public CPUCoolerBuilder(CPUCooler cpuCooler)
         {
-            name = cpuCooler.Name;
-            dimensions = cpuCooler.Dimensions;
-            supportedSockets = cpuCooler.SupportedSockets;
-            maxTDP = cpuCooler.MaxTDP;
+            _name = cpuCooler.Name;
+            _dimensions = cpuCooler.Dimensions;
+            _supportedSockets = cpuCooler.SupportedSockets;
+            _maxTDP = cpuCooler.MaxTDP;
         }
 
         public CPUCoolerBuilder SetName(string name)
         {
-            this.name = name;
+            _name = name;
             return this;
         }
 
         public CPUCoolerBuilder SetDimensions(string dimensions)
         {
-            this.dimensions = dimensions;
+            _dimensions = dimensions;
             return this;
         }
 
         public CPUCoolerBuilder SetSupportedSockets(Collection<string> supportedSockets)
         {
-            this.supportedSockets = supportedSockets;
+            _supportedSockets = supportedSockets;
             return this;
         }
 
         public CPUCoolerBuilder SetMaxTDP(int maxTDP)
         {
-            this.maxTDP = maxTDP;
+            _maxTDP = maxTDP;
             return this;
         }
 
@@ -58,10 +58,10 @@ public class CPUCooler
         {
             return new CPUCooler
             {
-                Name = name,
-                Dimensions = dimensions,
-                SupportedSockets = supportedSockets,
-                MaxTDP = maxTDP,
+                Name = _name,
+                Dimensions = _dimensions,
+                SupportedSockets = _supportedSockets,
+                MaxTDP = _maxTDP,
             };
         }
     }

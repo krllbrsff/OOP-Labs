@@ -15,15 +15,15 @@ public class Motherboard
 
     public class MotherboardBuilder
     {
-        private string? name;
-        private string? socket;
-        private int pcieLines;
-        private int sataPorts;
-        private Chipset? chipset;
-        private string? ddrStandard;
-        private int ramSlots;
-        private string? formFactor;
-        private BIOS? bios;
+        private string? _name;
+        private string? _socket;
+        private int _pcieLines;
+        private int _sataPorts;
+        private Chipset? _chipset;
+        private string? _ddrStandard;
+        private int _ramSlots;
+        private string? _formFactor;
+        private BIOS? _bios;
 
         public MotherboardBuilder()
         {
@@ -31,68 +31,68 @@ public class Motherboard
 
         public MotherboardBuilder(Motherboard motherboard)
         {
-            name = motherboard.Name;
-            socket = motherboard.Socket;
-            pcieLines = motherboard.PCIELines;
-            sataPorts = motherboard.SATAPorts;
-            chipset = motherboard.Chipset;
-            ddrStandard = motherboard.DDRStandard;
-            ramSlots = motherboard.RamSlots;
-            formFactor = motherboard.FormFactor;
-            bios = motherboard.BIOS;
+            _name = motherboard.Name;
+            _socket = motherboard.Socket;
+            _pcieLines = motherboard.PCIELines;
+            _sataPorts = motherboard.SATAPorts;
+            _chipset = motherboard.Chipset;
+            _ddrStandard = motherboard.DDRStandard;
+            _ramSlots = motherboard.RamSlots;
+            _formFactor = motherboard.FormFactor;
+            _bios = motherboard.BIOS;
         }
 
         public MotherboardBuilder SetName(string name)
         {
-            this.name = name;
+            _name = name;
             return this;
         }
 
         public MotherboardBuilder SetSocket(string socket)
         {
-            this.socket = socket;
+            _socket = socket;
             return this;
         }
 
         public MotherboardBuilder SetPCIELines(int pcieLines)
         {
-            this.pcieLines = pcieLines;
+            _pcieLines = pcieLines;
             return this;
         }
 
         public MotherboardBuilder SetSataPorts(int sataPorts)
         {
-            this.sataPorts = sataPorts;
+            _sataPorts = sataPorts;
             return this;
         }
 
         public MotherboardBuilder SetChipset(Chipset? chipset)
         {
-            this.chipset = chipset;
+            _chipset = chipset;
             return this;
         }
 
         public MotherboardBuilder SetDDRStandard(string ddrStandard)
         {
-            this.ddrStandard = ddrStandard;
+            _ddrStandard = ddrStandard;
             return this;
         }
 
         public MotherboardBuilder SetRamSlots(int ramSlots)
         {
-            this.ramSlots = ramSlots;
+            _ramSlots = ramSlots;
             return this;
         }
 
         public MotherboardBuilder SetFormFactor(string formFactor)
         {
-            this.formFactor = formFactor;
+            _formFactor = formFactor;
             return this;
         }
 
         public MotherboardBuilder SetBIOS(BIOS? bios)
         {
-            this.bios = bios;
+            _bios = bios;
             return this;
         }
 
@@ -100,15 +100,15 @@ public class Motherboard
         {
             return new Motherboard
             {
-                Name = name,
-                Socket = socket,
-                PCIELines = pcieLines,
-                SATAPorts = sataPorts,
-                Chipset = chipset,
-                DDRStandard = ddrStandard,
-                RamSlots = ramSlots,
-                FormFactor = formFactor,
-                BIOS = bios,
+                Name = _name,
+                Socket = _socket,
+                PCIELines = _pcieLines,
+                SATAPorts = _sataPorts,
+                Chipset = _chipset,
+                DDRStandard = _ddrStandard,
+                RamSlots = _ramSlots,
+                FormFactor = _formFactor,
+                BIOS = _bios,
             };
         }
     }

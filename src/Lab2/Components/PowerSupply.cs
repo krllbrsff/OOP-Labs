@@ -9,8 +9,8 @@ public class PowerSupply
 
     public class PowerSupplyBuilder
     {
-        private string? name;
-        private int power;
+        private string? _name;
+        private int _power;
 
         public PowerSupplyBuilder()
         {
@@ -18,18 +18,18 @@ public class PowerSupply
 
         public PowerSupplyBuilder(PowerSupply powerSupply)
         {
-            power = powerSupply.Power;
+            _power = powerSupply.Power;
         }
 
         public PowerSupplyBuilder SetName(string name)
         {
-            this.name = name;
+            _name = name;
             return this;
         }
 
         public PowerSupplyBuilder SetPower(int power)
         {
-            this.power = power;
+            _power = power;
             return this;
         }
 
@@ -37,8 +37,8 @@ public class PowerSupply
         {
             return new PowerSupply
             {
-                Name = name,
-                Power = power,
+                Name = _name,
+                Power = _power,
             };
         }
     }

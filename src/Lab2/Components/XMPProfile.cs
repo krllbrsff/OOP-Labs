@@ -9,34 +9,34 @@ public class XMPProfile
 
     public class XMPProfileBuilder
     {
-        private string? name;
-        private int frequency;
-        private double voltage;
+        private string? _name;
+        private int _frequency;
+        private double _voltage;
 
         public XMPProfileBuilder() { }
 
         public XMPProfileBuilder(XMPProfile xmpProfile)
         {
-            name = xmpProfile.Name;
-            frequency = xmpProfile.Frequency;
-            voltage = xmpProfile.Voltage;
+            _name = xmpProfile.Name;
+            _frequency = xmpProfile.Frequency;
+            _voltage = xmpProfile.Voltage;
         }
 
         public XMPProfileBuilder SetName(string name)
         {
-            this.name = name;
+            _name = name;
             return this;
         }
 
         public XMPProfileBuilder SetFrequency(int frequency)
         {
-            this.frequency = frequency;
+            _frequency = frequency;
             return this;
         }
 
         public XMPProfileBuilder SetVoltage(double voltage)
         {
-            this.voltage = voltage;
+            _voltage = voltage;
             return this;
         }
 
@@ -44,9 +44,9 @@ public class XMPProfile
         {
             return new XMPProfile
             {
-                Name = name,
-                Frequency = frequency,
-                Voltage = voltage,
+                Name = _name,
+                Frequency = _frequency,
+                Voltage = _voltage,
             };
         }
     }

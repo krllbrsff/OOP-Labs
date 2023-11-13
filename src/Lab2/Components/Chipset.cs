@@ -11,9 +11,9 @@ public class Chipset
 
     public class ChipsetBuilder
     {
-        private string? name;
-        private Collection<int>? memoryFrequencies;
-        private bool xmp;
+        private string? _name;
+        private Collection<int>? _memoryFrequencies;
+        private bool _xmp;
 
         public ChipsetBuilder()
         {
@@ -21,32 +21,32 @@ public class Chipset
 
         public ChipsetBuilder(Chipset chipset)
         {
-            name = chipset.Name;
-            memoryFrequencies = chipset.MemoryFrequencies;
-            xmp = chipset.XMP;
+            _name = chipset.Name;
+            _memoryFrequencies = chipset.MemoryFrequencies;
+            _xmp = chipset.XMP;
         }
 
         public ChipsetBuilder SetName(string name)
         {
-            this.name = name;
+            _name = name;
             return this;
         }
 
         public ChipsetBuilder AddMemoryFrequency(int frequency)
         {
-            memoryFrequencies?.Add(frequency);
+            _memoryFrequencies?.Add(frequency);
             return this;
         }
 
         public ChipsetBuilder WithXMPSupport()
         {
-            xmp = true;
+            _xmp = true;
             return this;
         }
 
         public ChipsetBuilder WithoutXMPSupport()
         {
-            xmp = false;
+            _xmp = false;
             return this;
         }
 
@@ -54,9 +54,9 @@ public class Chipset
         {
             return new Chipset
             {
-                Name = name,
-                MemoryFrequencies = memoryFrequencies,
-                XMP = xmp,
+                Name = _name,
+                MemoryFrequencies = _memoryFrequencies,
+                XMP = _xmp,
             };
         }
     }

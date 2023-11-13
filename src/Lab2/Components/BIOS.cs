@@ -8,8 +8,8 @@ public class BIOS
 
     public class BIOSBuilder
     {
-        private string? type;
-        private string? version;
+        private string? _type;
+        private string? _version;
 
         public BIOSBuilder()
         {
@@ -17,19 +17,19 @@ public class BIOS
 
         public BIOSBuilder(BIOS bios)
         {
-            type = bios.Type;
-            version = bios.Version;
+            _type = bios.Type;
+            _version = bios.Version;
         }
 
         public BIOSBuilder SetType(string type)
         {
-            this.type = type;
+            _type = type;
             return this;
         }
 
         public BIOSBuilder SetVersion(string version)
         {
-            this.version = version;
+            _version = version;
             return this;
         }
 
@@ -37,8 +37,8 @@ public class BIOS
         {
             return new BIOS
             {
-                Type = type,
-                Version = version,
+                Type = _type,
+                Version = _version,
             };
         }
     }

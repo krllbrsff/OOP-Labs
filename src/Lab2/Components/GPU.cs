@@ -12,12 +12,12 @@ public class GPU
 
     public class GPUBuilder
     {
-        private string? name;
-        private int height;
-        private int videoMemory;
-        private string? pcieVersion;
-        private string? chipFrequency;
-        private int energyConsumption;
+        private string? _name;
+        private int _height;
+        private int _videoMemory;
+        private string? _pcieVersion;
+        private string? _chipFrequency;
+        private int _energyConsumption;
 
         public GPUBuilder()
         {
@@ -25,47 +25,47 @@ public class GPU
 
         public GPUBuilder(GPU gpu)
         {
-            name = gpu.Name;
-            height = gpu.Height;
-            videoMemory = gpu.VideoMemory;
-            pcieVersion = gpu.PCIEVersion;
-            chipFrequency = gpu.ChipFrequency;
-            energyConsumption = gpu.EnergyConsumption;
+            _name = gpu.Name;
+            _height = gpu.Height;
+            _videoMemory = gpu.VideoMemory;
+            _pcieVersion = gpu.PCIEVersion;
+            _chipFrequency = gpu.ChipFrequency;
+            _energyConsumption = gpu.EnergyConsumption;
         }
 
         public GPUBuilder SetName(string name)
         {
-            this.name = name;
+            _name = name;
             return this;
         }
 
         public GPUBuilder SetHeight(int height)
         {
-            this.height = height;
+            _height = height;
             return this;
         }
 
         public GPUBuilder SetVideoMemory(int videoMemory)
         {
-            this.videoMemory = videoMemory;
+            _videoMemory = videoMemory;
             return this;
         }
 
         public GPUBuilder SetPCIEVersion(string pcieVersion)
         {
-            this.pcieVersion = pcieVersion;
+            _pcieVersion = pcieVersion;
             return this;
         }
 
         public GPUBuilder SetChipFrequency(string chipFrequency)
         {
-            this.chipFrequency = chipFrequency;
+            _chipFrequency = chipFrequency;
             return this;
         }
 
         public GPUBuilder SetPowerConsumption(int energyConsumption)
         {
-            this.energyConsumption = energyConsumption;
+            _energyConsumption = energyConsumption;
             return this;
         }
 
@@ -73,12 +73,12 @@ public class GPU
         {
             return new GPU
             {
-                Name = name,
-                Height = height,
-                VideoMemory = videoMemory,
-                PCIEVersion = pcieVersion,
-                ChipFrequency = chipFrequency,
-                EnergyConsumption = energyConsumption,
+                Name = _name,
+                Height = _height,
+                VideoMemory = _videoMemory,
+                PCIEVersion = _pcieVersion,
+                ChipFrequency = _chipFrequency,
+                EnergyConsumption = _energyConsumption,
             };
         }
     }
