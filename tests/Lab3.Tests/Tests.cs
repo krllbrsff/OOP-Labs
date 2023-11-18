@@ -105,7 +105,7 @@ public class Tests
         var topic = new Topic("User messenger", addressee);
         var consoleMock = new Mock<TextWriter>();
         Console.SetOut(consoleMock.Object);
-        string expectedOutput = "Test message/nHello world!!!\nvia Telegram";
+        string expectedOutput = "Test message\nHello world!!!\nvia Telegram";
         topic.Send(message);
 
         consoleMock.Verify(x => x.WriteLine(expectedOutput), Times.Once);
