@@ -1,5 +1,5 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab3;
-public enum Importancelevels
+public enum ImportanceLevels
 {
     Low,
     Medium,
