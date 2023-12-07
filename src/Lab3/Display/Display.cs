@@ -1,22 +1,17 @@
-﻿using System;
-using System.IO;
-
-namespace Itmo.ObjectOrientedProgramming.Lab3;
-public class Display
+﻿namespace Itmo.ObjectOrientedProgramming.Lab3;
+public class Display : Addressee
 {
-    public Display(string path)
+    public Display(string name, string path, ImportanceLevels filter)
     {
-        Path = path;
+        Name = name;
+        DisplayDriver = new DisplayDriver(filter, path);
     }
 
-    public string Path { get; }
+    public string Name { get; }
+    public DisplayDriver DisplayDriver { get; }
 
-    public void ReceiveMessage(string messege)
+    public override void ReceiveMessage(Message message)
     {
-        Console.WriteLine(messege);
-
-        var sw = new StreamWriter(Path);
-        sw.WriteLine(messege);
-        sw.Close();
+        DisplayDriver.ReceiveMessage(message);
     }
 }

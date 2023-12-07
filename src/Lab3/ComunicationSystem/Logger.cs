@@ -12,12 +12,14 @@ public class Logger : Addressee
 
     public Addressee? Addressee { get; }
 
+    public static void LogToConsole()
+    {
+        Console.WriteLine("Message sent");
+    }
+
     public override void ReceiveMessage(Message message)
     {
-        if (message != null)
-        {
-            Addressee?.ReceiveMessage(message);
-            Console.WriteLine("Message sent");
-        }
+        Addressee?.ReceiveMessage(message);
+        LogToConsole();
     }
 }

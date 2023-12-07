@@ -11,6 +11,11 @@ public class Filter : Addressee
 
     public override void ReceiveMessage(Message message)
     {
+        FilterByLevel(message);
+    }
+
+    private void FilterByLevel(Message message)
+    {
         if (message?.ImportanceFilter >= _addressee.ImportanceFilter)
         {
             _addressee.ReceiveMessage(message);
