@@ -12,6 +12,7 @@
         <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <AnalysisMode>All</AnalysisMode>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,6 +20,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+      
     </ItemGroup>
 
     <!-- ITMO is DEV code style analyzers -->
