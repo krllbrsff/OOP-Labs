@@ -1,10 +1,10 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab3;
 public class Display : Addressee
 {
-    public Display(string name, string path, ImportanceLevels filter)
+    public Display(string name, string path)
     {
         Name = name;
-        DisplayDriver = new DisplayDriver(filter, path);
+        DisplayDriver = new DisplayDriver(path);
     }
 
     public string Name { get; }

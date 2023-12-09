@@ -4,14 +4,10 @@ using System.Collections.ObjectModel;
 namespace Itmo.ObjectOrientedProgramming.Lab3;
 public class UserAddressee : Addressee
 {
-    public UserAddressee(ImportanceLevels filter)
-    {
-        ImportanceFilter = filter;
-    }
+    public UserAddressee() { }
 
     public Collection<Message> NewMessages { get; } = new Collection<Message>();
     public Collection<Message> Archive { get; } = new Collection<Message>();
-    public override ImportanceLevels ImportanceFilter { get; }
     public override void ReceiveMessage(Message message)
     {
         Console.WriteLine(message?.Title + '\n' + message?.Text);

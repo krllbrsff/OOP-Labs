@@ -9,13 +9,10 @@ public class DisplayDriver : Addressee
     private byte _red;
     private byte _green;
     private byte _blue;
-    public DisplayDriver(ImportanceLevels filter, string path)
+    public DisplayDriver(string path)
     {
         _path = path;
-        ImportanceFilter = filter;
     }
-
-    public override ImportanceLevels ImportanceFilter { get; }
 
     public override void ReceiveMessage(Message message)
     {

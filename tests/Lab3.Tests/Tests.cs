@@ -10,7 +10,7 @@ public class Tests
     [Fact]
     public void NewMessageToUserTest()
     {
-        var user = new UserAddressee(ImportanceLevels.Low);
+        var user = new UserAddressee();
         var topic = new Topic("Test user", user);
         Message message = new Message.MessageBuilder()
             .SetTitle("Test message")
@@ -26,7 +26,7 @@ public class Tests
     [Fact]
     public void MarkMessageAsReadTest()
     {
-        var user = new UserAddressee(ImportanceLevels.Low);
+        var user = new UserAddressee();
         var topic = new Topic("Test user", user);
         Message message = new Message.MessageBuilder()
             .SetTitle("Test message")
@@ -43,7 +43,7 @@ public class Tests
     [Fact]
     public void MarkReadMessageTest()
     {
-        var user = new UserAddressee(ImportanceLevels.Low);
+        var user = new UserAddressee();
         var topic = new Topic("Test user", user);
         Message message = new Message.MessageBuilder()
             .SetTitle("Test message")
@@ -61,13 +61,12 @@ public class Tests
     public void FilterTest()
     {
         var addresseeMock = new Mock<Addressee>();
-        addresseeMock.Setup(x => x.ImportanceFilter).Returns(ImportanceLevels.High);
         Message lowPriorityMessage = new Message.MessageBuilder()
             .SetTitle("Test message")
             .SetText("Hello world!!!")
             .SetLevel(ImportanceLevels.Low)
             .Build();
-        var filter = new Filter(addresseeMock.Object);
+        var filter = new Filter(addresseeMock.Object, ImportanceLevels.High);
         var topic = new Topic("User with high priority filter", filter);
 
         topic.Send(lowPriorityMessage);
@@ -78,7 +77,7 @@ public class Tests
     [Fact]
     public void LoggerTest()
     {
-        var user = new UserAddressee(ImportanceLevels.Medium);
+        var user = new UserAddressee();
         Message message = new Message.MessageBuilder()
             .SetTitle("Test message")
             .SetText("Hello world!!!")
@@ -95,7 +94,7 @@ public class Tests
     [Fact]
     public void MessengerTest()
     {
-        var user = new Messenger("Telegram", ImportanceLevels.Medium);
+        var user = new Messenger("Telegram");
         var addressee = new MessengerAddressee(user);
         Message message = new Message.MessageBuilder()
             .SetTitle("Test message")

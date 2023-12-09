@@ -5,10 +5,8 @@ public class MessengerAddressee : Addressee
     public MessengerAddressee(Messenger messenger)
     {
         _messenger = messenger;
-        ImportanceFilter = _messenger.ImportanceFilter;
     }
 
-    public override ImportanceLevels ImportanceFilter { get; }
     public override void ReceiveMessage(Message message)
     {
         _messenger.ReceiveMessage(message);
