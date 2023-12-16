@@ -13,34 +13,34 @@ public class ComponentsStock
             ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
         };
 
-        string json = File.ReadAllText(@"C:\Users\kirbo\source\repos\krllbrsff\src\Lab2\Stock\CPUs.json");
+        string json = File.ReadAllText("Stock\\CPUs.json");
         CPUStock = JsonConvert.DeserializeObject<Collection<CPU>>(json, settings);
 
-        json = File.ReadAllText(@"C:\Users\kirbo\source\repos\krllbrsff\src\Lab2\Stock\GPUs.json");
+        json = File.ReadAllText("Stock\\GPUs.json");
         GPUStock = JsonConvert.DeserializeObject<Collection<GPU>>(json, settings);
 
-        json = File.ReadAllText(@"C:\Users\kirbo\source\repos\krllbrsff\src\Lab2\Stock\Motherboards.json");
+        json = File.ReadAllText("Stock\\Motherboards.json");
         MotherboardStock = JsonConvert.DeserializeObject<Collection<Motherboard>>(json, settings);
 
-        json = File.ReadAllText(@"C:\Users\kirbo\source\repos\krllbrsff\src\Lab2\Stock\RAMs.json");
+        json = File.ReadAllText("Stock\\RAMs.json");
         RAMStock = JsonConvert.DeserializeObject<Collection<RAM>>(json, settings);
 
-        json = File.ReadAllText(@"C:\Users\kirbo\source\repos\krllbrsff\src\Lab2\Stock\SSDs.json");
+        json = File.ReadAllText("Stock\\SSDs.json");
         SSDStock = JsonConvert.DeserializeObject<Collection<SSD>>(json, settings);
 
-        json = File.ReadAllText(@"C:\Users\kirbo\source\repos\krllbrsff\src\Lab2\Stock\HDDs.json");
+        json = File.ReadAllText("Stock\\HDDs.json");
         HDDStock = JsonConvert.DeserializeObject<Collection<HDD>>(json, settings);
 
-        json = File.ReadAllText(@"C:\Users\kirbo\source\repos\krllbrsff\src\Lab2\Stock\Corpuses.json");
+        json = File.ReadAllText("Stock\\Corpuses.json");
         CorpusStock = JsonConvert.DeserializeObject<Collection<Corpus>>(json, settings);
 
-        json = File.ReadAllText(@"C:\Users\kirbo\source\repos\krllbrsff\src\Lab2\Stock\WiFiAdapters.json");
+        json = File.ReadAllText("Stock\\WiFiAdapters.json");
         WiFiAdapterStock = JsonConvert.DeserializeObject<Collection<WiFiAdapter>>(json, settings);
 
-        json = File.ReadAllText(@"C:\Users\kirbo\source\repos\krllbrsff\src\Lab2\Stock\CPUCoolers.json");
+        json = File.ReadAllText("Stock\\CPUCoolers.json");
         CoolerStock = JsonConvert.DeserializeObject<Collection<CPUCooler>>(json, settings);
 
-        json = File.ReadAllText(@"C:\Users\kirbo\source\repos\krllbrsff\src\Lab2\Stock\PowerSupplies.json");
+        json = File.ReadAllText("Stock\\PowerSupplies.json");
         PowerSupplyStock = JsonConvert.DeserializeObject<Collection<PowerSupply>>(json, settings);
     }
 
