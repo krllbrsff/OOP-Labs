@@ -1,5 +1,5 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab3;
-public class Display : Addressee
+public class Display
 {
     public Display(string name, string path)
     {
@@ -10,7 +10,7 @@ public class Display : Addressee
     public string Name { get; }
     public DisplayDriver DisplayDriver { get; }
 
-    public override void ReceiveMessage(Message message)
+    public void DisplayMessage(Message message)
     {
         DisplayDriver.ReceiveMessage(message);
     }
