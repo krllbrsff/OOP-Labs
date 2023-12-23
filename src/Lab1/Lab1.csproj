@@ -5,7 +5,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Include="..\..\.editorconfig" Link=".editorconfig" />
+
+      <PackageReference Include="Newtonsoft.Json" />
+
     </ItemGroup>
 
 </Project>

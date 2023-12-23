@@ -1,0 +1,56 @@
+[
+  {
+    "Name": "ASUS ROG Strix Z590-E",
+    "Socket": "LGA 1200",
+    "PCIELines": 24,
+    "SATAPorts": 6,
+    "Chipset": {
+      "Name": "Intel Z590",
+      "MemoryFrequencies": [ 3200, 2933 ],
+      "XMP": true
+    },
+    "DDRStandard": "DDR4",
+    "RAMSlots": 4,
+    "FormFactor": "ATX",
+    "BIOS": {
+      "Type": "UEFI",
+      "Version": "v1.2"
+    }
+  },
+  {
+    "Name": "MSI B450 TOMAHAWK MAX",
+    "Socket": "AM4",
+    "PCIELines": 16,
+    "SATAPorts": 4,
+    "Chipset": {
+      "Name": "AMD B450",
+      "MemoryFrequencies": [ 3200, 2933 ],
+      "XMP": true
+    },
+    "DDRStandard": "DDR4",
+    "RAMSlots": 2,
+    "FormFactor": "Micro-ATX",
+    "BIOS": {
+      "Type": "UEFI",
+      "Version": "v1.0"
+    }
+  },
+  {
+    "Name": "GIGABYTE Z690 AORUS PRO",
+    "Socket": "LGA 1700",
+    "PCIELines": 20,
+    "SATAPorts": 8,
+    "Chipset": {
+      "Name": "Intel Z690",
+      "MemoryFrequencies": [ 3600, 3200 ],
+      "XMP": true
+    },
+    "DDRStandard": "DDR4",
+    "RAMSlots": 4,
+    "FormFactor": "ATX",
+    "BIOS": {
+      "Type": "UEFI",
+      "Version": "v2.1"
+    }
+  }
+]
