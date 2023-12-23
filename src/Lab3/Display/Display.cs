@@ -4,7 +4,7 @@ public class Display
     public Display(string name, string path)
     {
         Name = name;
-        DisplayDriver = new DisplayDriver(path);
+        DisplayDriver = new DisplayDriver(path, new Color(0, 0, 0));
     }
 
     public string Name { get; }
