@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "Seagate Barracuda 1TB",
+    "CapacityGB": 1000,
+    "SpindleSpeed": 7200,
+    "EnergyConsumption": 6
+  },
+  {
+    "Name": "Western Digital Blue 2TB",
+    "CapacityGB": 2000,
+    "SpindleSpeed": 5400,
+    "EnergyConsumption": 5
+  },
+  {
+    "Name": "Toshiba X300 4TB",
+    "CapacityGB": 4000,
+    "SpindleSpeed": 7200,
+    "EnergyConsumption": 8
+  }
+]

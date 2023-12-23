@@ -1,0 +1,32 @@
+[
+  {
+    "Name": "Intel Core i9-11900K",
+    "Socket": "LGA 1200",
+    "IntegratedGraphics": false,
+    "CoreCount": 8,
+    "CoreFrequency": 3.5,
+    "RAMFrequency": 3200,
+    "TDP": 125,
+    "EnergyConsumption": 150
+  },
+  {
+    "Name": "AMD Ryzen 9 5900X",
+    "Socket": "AM4",
+    "IntegratedGraphics": false,
+    "CoreCount": 12,
+    "CoreFrequency": 3.7,
+    "RAMFrequency": 3600,
+    "TDP": 105,
+    "EnergyConsumption": 142
+  },
+  {
+    "Name": "Intel Core i5-11600", 
+    "Socket": "LGA 1200",
+    "IntegratedGraphics": true,
+    "CoreCount": 6,
+    "CoreFrequency": 3.9,
+    "RAMFrequency": 3200,
+    "TDP": 125,
+    "EnergyConsumption": 130
+  }
+]
