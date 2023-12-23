@@ -1,0 +1,23 @@
+[
+  {
+    "Name": "Samsung 970 EVO Plus 500GB",
+    "ConnectionType": "PCI-E",
+    "CapacityGB": 500,
+    "MaxSpeed": 3500,
+    "EnergyConsumption": 5
+  },
+  {
+    "Name": "Crucial MX500 1TB",
+    "ConnectionType": "SATA",
+    "CapacityGB": 1000,
+    "MaxSpeed": 550,
+    "EnergyConsumption": 3
+  },
+  {
+    "Name": "Sabrent Rocket 4.0 2TB",
+    "ConnectionType": "PCI-E",
+    "CapacityGB": 2000,
+    "MaxSpeed": 5000,
+    "EnergyConsumption": 7
+  }
+]
