@@ -5,7 +5,7 @@ public record Command
 {
     public IList<string>? CommandText { get; private set; }
 
-    private static IList<string> Parse(string command)
+    private static string[] Parse(string command)
     {
         return command.Split(' ');
     }

@@ -4,9 +4,7 @@
         <RootNamespace>Itmo.ObjectOrientedProgramming.Lab2</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" />
-    </ItemGroup>
+
 
     <ItemGroup>
       <None Update="Stock\Corpuses.json">
